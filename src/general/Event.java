@@ -1,4 +1,4 @@
-package Lab5.general;
+package general;
 
 abstract public class Event {
 	EventQueue queue;

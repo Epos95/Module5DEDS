@@ -1,4 +1,4 @@
-package Lab5.general;
+package general;
 
 import java.util.ArrayList;
 
@@ -6,8 +6,8 @@ public class EventQueue {
 	
 	private ArrayList<Event> queue = new ArrayList<Event>();
 	
-	public ArrayList<Event> getQueue() {
-		return queue;
+	public Event pop() {
+		return queue.get(0);
 	}
 	
 	void addToQueue(Event e) {

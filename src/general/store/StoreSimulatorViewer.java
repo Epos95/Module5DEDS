@@ -1,8 +1,8 @@
-package Lab5.general.store;
+package general.store;
 
 import java.util.Observable;
 
-import Lab5.general.View;
+import general.View;
 
 public class StoreSimulatorViewer extends View {
 
@@ -14,12 +14,12 @@ public class StoreSimulatorViewer extends View {
 		System.out.println("Ankomsthastighet: " /* + ankomsthastigheten*/);
 		System.out.println("Plocktider: ");
 		System.out.println("Betaltider: ");
-		System.out.println("Frö: ");
+		System.out.println("Frï¿½: ");
 		System.out.println("");
 		
-		System.out.println("FÖRLOPP");
+		System.out.println("Fï¿½RLOPP");
 		System.out.println("==========");
-		System.out.println("Tid Händelse Kund ? led ledT I $ :-( köat köT köar [Kassakö..]\r\n"
+		System.out.println("Tid Hï¿½ndelse Kund ? led ledT I $ :-( kï¿½at kï¿½T kï¿½ar [Kassakï¿½..]\r\n"
 				+ "");
 	}
 	
@@ -28,17 +28,17 @@ public class StoreSimulatorViewer extends View {
 		System.out.println("RESULTAT \n========== \n1) Av " /*+ totalt skapade kunder*/ + "kunder handlade "
 				/*+ antalet som betalade*/ + "medan\n" /*+ antalet missade kunder (pga fullt i butik)*/);
 		
-		System.out.println("2) Total ledig kassatid: LÄGG TILL SEN! \n" + "Genomsnitlig ledig kassatid: LÄGG TILL te "
-				+ "(dvs x% av tiden från öppning tills sista kunden betalat).");
+		System.out.println("2) Total ledig kassatid: Lï¿½GG TILL SEN! \n" + "Genomsnitlig ledig kassatid: Lï¿½GG TILL te "
+				+ "(dvs x% av tiden frï¿½n ï¿½ppning tills sista kunden betalat).");
 		
-		System.out.println("3) Total tid 5 kunder tvingats köa: LÄGG TILL te. \n "
-				+ "Genomsnitlig kötid: LÄGG TILL te.");
+		System.out.println("3) Total tid 5 kunder tvingats kï¿½a: Lï¿½GG TILL te. \n "
+				+ "Genomsnitlig kï¿½tid: Lï¿½GG TILL te.");
 	}
 	
 	
 	public void update(Observable o, Object arg) {
 		
-		System.out.println("Läggs till senare!");
+		System.out.println("Lï¿½ggs till senare!");
 		
 	}
 
