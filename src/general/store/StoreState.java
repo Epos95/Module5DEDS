@@ -5,7 +5,7 @@ import general.GeneralEvent;
 
 import java.util.Observable;
 
-public class StoreState extends Observable {
+public class StoreState extends State {
     // Simulation parameters
     // alla dessa ska komma via parametrar till konstruktor
     protected  int cashRegisters = 4;
