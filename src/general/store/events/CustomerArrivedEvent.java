@@ -9,9 +9,9 @@ public class CustomerArrivedEvent extends GeneralEvent {
 
     Customer cus;
 
-    public CustomerArrivedEvent(EventQueue q, Customer c) {
+    public CustomerArrivedEvent(EventQueue q, Customer c, double time) {
         // generate the occurencetime randomly
-        this.occurenceTime = -1;
+        this.occurenceTime = time;
         this.queue = q;
         this.cus = c;
     }
@@ -26,7 +26,7 @@ public class CustomerArrivedEvent extends GeneralEvent {
             return;
         } else {
             // aslong as the store is open we should generate new arrival events
-            this.queue.push(new CustomerArrivedEvent(this.queue, state.newCustomer()));
+            this.queue.push(new CustomerArrivedEvent(this.queue, state.newCustomer(), state.arrive.getTime()+state.currentTime));
         }
 
         if (state.currentCustomers == state.maxCustomers) {
@@ -41,7 +41,7 @@ public class CustomerArrivedEvent extends GeneralEvent {
         state.currentCustomers += 1;
 
         // generate PickEvent
-        this.queue.push(new PickEvent(this.queue, this.cus));
+        this.queue.push(new PickEvent(this.queue, this.cus, state.pickingTime.getTime()));
         // time might be fucky wucky here
 
     }

@@ -3,13 +3,17 @@ package general.store.events;
 import general.GeneralEvent;
 import general.EventQueue;
 import general.State;
+import general.store.Customer;
 
 public class PayEvent extends GeneralEvent {
 
-    public PayEvent(EventQueue q) {
+    Customer cus;
+
+    public PayEvent(EventQueue q, Customer c, double time) {
         // generate time and stuff
-        this.occurenceTime = -1;
+        this.occurenceTime = time;
         this.queue = q;
+        this.cus = c;
     }
 
     @Override
@@ -18,7 +22,7 @@ public class PayEvent extends GeneralEvent {
 
         if (!state.cQueue.isEmpty()) {
             state.cQueue.dequeue();
-            this.queue.push(new PayEvent(this.queue));
+            this.queue.push(new PayEvent(this.queue, cus, state.cashierSpeed.getTime()+state.currentTime));
         } else {
             // no one is in queue, register opens up
             state.freeCashRegisters += 1;

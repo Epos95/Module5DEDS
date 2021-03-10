@@ -31,7 +31,7 @@ public class StoreState extends Observable {
     public CashRegisterQueue cQueue = new CashRegisterQueue();
     public CustomerCreator cCreator = new CustomerCreator();
     private int currentAmountCustomers = 0;
-    double currentTime;
+    public double currentTime;
 
     public boolean isOpen;
     public int currentCustomers;
@@ -39,10 +39,13 @@ public class StoreState extends Observable {
     public int freeCashRegisters = cashRegisters;
     CustomerCreator customerCreator;
 
+    public ArriveIntervalCalculator arrive;
+    public CashierSpeedCalculator cashierSpeed;
+    public PickingTimeCalculator pickingTime;
     public StoreState() {
-        ArriveIntervalCalculator arrive = new ArriveIntervalCalculator(arriveInterval, randomizerSeed);
-        CashierSpeedCalculator cashierSpeed = new CashierSpeedCalculator(cashierMin, cashierMax, randomizerSeed);
-        PickingTimeCalculator pickingTime = new PickingTimeCalculator(pickingMin, pickingMax, randomizerSeed);
+        arrive = new ArriveIntervalCalculator(arriveInterval, randomizerSeed);
+        cashierSpeed = new CashierSpeedCalculator(cashierMin, cashierMax, randomizerSeed);
+        pickingTime = new PickingTimeCalculator(pickingMin, pickingMax, randomizerSeed);
 
 
         System.out.println(arrive.getTime());

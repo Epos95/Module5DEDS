@@ -10,9 +10,9 @@ public class PickEvent extends GeneralEvent {
     Customer cus;
 
     // this event might not need the event que?
-    public PickEvent(EventQueue q, Customer c) {
+    public PickEvent(EventQueue q, Customer c, double time) {
         // generate time here somehow
-        this.occurenceTime = -1; // TODO
+        this.occurenceTime = time;
         this.queue = q;
         this.cus = c;
     }

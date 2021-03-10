@@ -18,7 +18,7 @@ public class StartEvent extends GeneralStartEvent {
 
         // add a "customerArrivedEvent" to queue
         Customer c = state.newCustomer();
-        this.queue.push(new CustomerArrivedEvent(queue, c));
+        this.queue.push(new CustomerArrivedEvent(queue, c, state.arrive.getTime()+state.currentTime));
 
     }
 

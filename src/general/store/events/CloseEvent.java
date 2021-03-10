@@ -7,8 +7,8 @@ import general.State;
 
 public class CloseEvent extends GeneralEndEvent {
 
-    public CloseEvent(EventQueue q) {
-        this.occurenceTime = -1;
+    public CloseEvent(EventQueue q, double time) {
+        this.occurenceTime = time;
         this.queue = q;
     }
 
