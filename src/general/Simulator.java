@@ -2,24 +2,25 @@ package general;
 
 import general.store.StoreSimulatorViewer;
 import general.store.StoreState;
+import general.store.events.StartEvent;
 
 public class Simulator {
 	State state;
+	EventQueue queue;
 
-    public Simulator(State s) {
+    public Simulator(State s, EventQueue q ) {
     	this.state = s;
+    	this.queue = q;
 	}
 	
 	public void run() {
 		
 		///* F�r att testa att saker funkar nedan
 
-		EventQueue eventQueue = new EventQueue();
-
 		while (!state.isNotRunning) {
-			if(eventQueue.len() > 0) {
-			
-				eventQueue.pop().execute();
+			if(queue.len() > 0) {
+
+				queue.pop().execute();
 				state.notifyObservers();
 
 		}

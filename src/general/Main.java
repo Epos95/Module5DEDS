@@ -3,6 +3,7 @@ package general;
 
 import general.store.StoreSimulatorViewer;
 import general.store.StoreState;
+import general.store.events.StartEvent;
 
 public class Main {
 
@@ -23,7 +24,10 @@ public class Main {
 		StoreSimulatorViewer v = new StoreSimulatorViewer();
 		s.addObserver(v);
 		v.startView();
-		Simulator simulator = new Simulator(s);
+
+		EventQueue e = new EventQueue();
+		e.addToQueue(new StartEvent(e, s));
+		Simulator simulator = new Simulator(s, e);
 		simulator.run();
 		v.resultsView();
 		
