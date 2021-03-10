@@ -43,6 +43,8 @@ public class StoreState extends Observable {
     public CashierSpeedCalculator cashierSpeed;
     public PickingTimeCalculator pickingTime;
     public StoreState() {
+        this.setChanged();
+        this.notifyObservers();
         arrive = new ArriveIntervalCalculator(arriveInterval, randomizerSeed);
         cashierSpeed = new CashierSpeedCalculator(cashierMin, cashierMax, randomizerSeed);
         pickingTime = new PickingTimeCalculator(pickingMin, pickingMax, randomizerSeed);
@@ -56,6 +58,8 @@ public class StoreState extends Observable {
     }
 
     public Customer newCustomer() {
+        this.setChanged();
+        this.notifyObservers();
         return customerCreator.getCustomer();
     }
 

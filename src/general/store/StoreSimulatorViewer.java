@@ -37,7 +37,9 @@ public class StoreSimulatorViewer extends View {
 	
 	
 	public void update(Observable o, Object arg) {
-		
+	    System.out.println(arg);
+		System.out.println("LJAEFJLSDFGJKGj");
+
 		System.out.println("Läggs till senare!");
 		
 	}

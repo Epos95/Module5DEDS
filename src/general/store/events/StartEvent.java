@@ -1,11 +1,11 @@
 package general.store.events;
 
 import general.EventQueue;
-import general.GeneralStartEvent;
+import general.GeneralEvent;
 import general.State;
 import general.store.Customer;
 
-public class StartEvent extends GeneralStartEvent {
+public class StartEvent extends GeneralEvent {
 
     public StartEvent(EventQueue q) {
         // time should be set as the start time (0)

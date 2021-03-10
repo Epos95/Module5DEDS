@@ -19,7 +19,8 @@ public class Simulator {
 			if(eventQueue.len() > 0) {
 			
 				eventQueue.pop().execute(state);
-			
+				state.notifyObservers();
+
 		}
 	}
 	}
