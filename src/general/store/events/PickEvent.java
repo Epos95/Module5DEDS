@@ -2,7 +2,6 @@ package general.store.events;
 
 import general.GeneralEvent;
 import general.EventQueue;
-import general.State;
 import general.store.Customer;
 import general.store.StoreState;
 
@@ -26,7 +25,7 @@ public class PickEvent extends GeneralEvent {
             // no open registers
             // add customer to queue of customers
             // maybe return here?
-            state.cQueue.add(this.cus);
+            state.cQueue.enqueue(this.cus);
             return;
         }
 
