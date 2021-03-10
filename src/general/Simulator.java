@@ -12,6 +12,7 @@ public class Simulator {
 		State state = new State();
 		EventQueue eventQueue = new EventQueue();
 		StoreSimulatorViewer viewer = new StoreSimulatorViewer();
+		state.addObserver(viewer);
 		viewer.startView();
 		viewer.resultsView();
 		
