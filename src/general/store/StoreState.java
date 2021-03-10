@@ -5,7 +5,7 @@ import general.GeneralEvent;
 
 import java.util.Observable;
 
-public class StoreState extends State {
+public class StoreState extends Observable {
     // Simulation parameters
     // alla dessa ska komma via parametrar till konstruktor
     protected final int cashRegisters = 4;
@@ -43,6 +43,8 @@ public class StoreState extends State {
     public CashierSpeedCalculator cashierSpeed;
     public PickingTimeCalculator pickingTime;
     public StoreState() {
+        this.setChanged();
+        this.notifyObservers();
         arrive = new ArriveIntervalCalculator(arriveInterval, randomizerSeed);
         cashierSpeed = new CashierSpeedCalculator(cashierMin, cashierMax, randomizerSeed);
         pickingTime = new PickingTimeCalculator(pickingMin, pickingMax, randomizerSeed);
@@ -83,9 +85,5 @@ public class StoreState extends State {
         this.missedCustomers += 1;
     }
 
-    public void updateView() {
-        setChanged();
-        notifyObservers();
-    }
 
 }

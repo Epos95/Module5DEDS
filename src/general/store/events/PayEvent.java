@@ -29,7 +29,6 @@ public class PayEvent extends GeneralEvent {
             state.freeCashRegisters += 1;
         }
 
-        state.updateView();
     }
 
     @Override

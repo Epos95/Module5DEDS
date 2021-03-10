@@ -45,7 +45,6 @@ public class CustomerArrivedEvent extends GeneralEvent {
         this.queue.push(new PickEvent(this.queue, this.cus, state.pickingTime.getTime()));
         // time might be fucky wucky here
 
-        state.updateView();
     }
 
     @Override

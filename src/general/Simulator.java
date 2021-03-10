@@ -7,19 +7,20 @@ public class Simulator {
 	
 	public void run() {
 		
+		///* F�r att testa att saker funkar nedan
 
 		State state = new State();
 		EventQueue eventQueue = new EventQueue();
-		StoreSimulatorViewer viewer = new StoreSimulatorViewer(state);
+		StoreSimulatorViewer viewer = new StoreSimulatorViewer();
+		state.addObserver(viewer);
 		viewer.startView();
 		viewer.resultsView();
-		state.addObserver(viewer);
 
 		while (!state.isNotRunning) {
 			if(eventQueue.len() > 0) {
 			
 				eventQueue.pop().execute(state);
-				state.updateView();
+				state.notifyObservers();
 
 		}
 	}

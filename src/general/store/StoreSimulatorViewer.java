@@ -7,11 +7,6 @@ import general.View;
 
 public class StoreSimulatorViewer extends View implements Observer {
 
-    StoreState state;
-    public StoreSimulatorViewer(StoreState o) {
-    	this.state = o;
-	}
-
 	public void startView() {
 		System.out.println("PARAMETRAR");
 		System.out.println("==========");
@@ -40,11 +35,15 @@ public class StoreSimulatorViewer extends View implements Observer {
 		System.out.println("3) Total tid 5 kunder tvingats köa: LäGG TILL te. \n "
 				+ "Genomsnitlig kötid: LäGG TILL te.");
 	}
-
+	
 
 	@Override
 	public void update(Observable o, Object arg) {
-	    System.out.println("dö");
+	    System.out.println(arg);
+		System.out.println("LJAEFJLSDFGJKGj");
 
+		System.out.println("Läggs till senare!");
+		
 	}
+
 }

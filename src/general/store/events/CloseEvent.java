@@ -16,7 +16,6 @@ public class CloseEvent extends GeneralEvent {
         state.currentTime = this.occurenceTime;
         // closes the store
         state.isOpen = false;
-        state.updateView();
     }
 
     @Override
