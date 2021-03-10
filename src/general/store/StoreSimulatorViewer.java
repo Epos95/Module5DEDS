@@ -14,12 +14,12 @@ public class StoreSimulatorViewer extends View {
 		System.out.println("Ankomsthastighet: " /* + ankomsthastigheten*/);
 		System.out.println("Plocktider: ");
 		System.out.println("Betaltider: ");
-		System.out.println("Fr�: ");
+		System.out.println("Frö: ");
 		System.out.println("");
 		
-		System.out.println("F�RLOPP");
+		System.out.println("FöRLOPP");
 		System.out.println("==========");
-		System.out.println("Tid H�ndelse Kund ? led ledT I $ :-( k�at k�T k�ar [Kassak�..]\r\n"
+		System.out.println("Tid Höndelse Kund ? led ledT I $ :-( köat köT köar [Kassakö..]\r\n"
 				+ "");
 	}
 	
@@ -28,17 +28,17 @@ public class StoreSimulatorViewer extends View {
 		System.out.println("RESULTAT \n========== \n1) Av " /*+ totalt skapade kunder*/ + "kunder handlade "
 				/*+ antalet som betalade*/ + "medan\n" /*+ antalet missade kunder (pga fullt i butik)*/);
 		
-		System.out.println("2) Total ledig kassatid: L�GG TILL SEN! \n" + "Genomsnitlig ledig kassatid: L�GG TILL te "
-				+ "(dvs x% av tiden fr�n �ppning tills sista kunden betalat).");
+		System.out.println("2) Total ledig kassatid: LäGG TILL SEN! \n" + "Genomsnitlig ledig kassatid: LäGG TILL te "
+				+ "(dvs x% av tiden från öppning tills sista kunden betalat).");
 		
-		System.out.println("3) Total tid 5 kunder tvingats k�a: L�GG TILL te. \n "
-				+ "Genomsnitlig k�tid: L�GG TILL te.");
+		System.out.println("3) Total tid 5 kunder tvingats köa: LäGG TILL te. \n "
+				+ "Genomsnitlig kötid: LäGG TILL te.");
 	}
 	
 	
 	public void update(Observable o, Object arg) {
 		
-		System.out.println("L�ggs till senare!");
+		System.out.println("Läggs till senare!");
 		
 	}
 
