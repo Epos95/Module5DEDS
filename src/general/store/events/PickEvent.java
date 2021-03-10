@@ -4,21 +4,23 @@ import general.GeneralEvent;
 import general.EventQueue;
 import general.State;
 import general.store.Customer;
+import general.store.StoreState;
 
 public class PickEvent extends GeneralEvent {
 
     Customer cus;
-
+    StoreState state;
     // this event might not need the event que?
-    public PickEvent(EventQueue q, Customer c, double time) {
+    public PickEvent(EventQueue q, Customer c, double time, StoreState s) {
         // generate time here somehow
         this.occurenceTime = time;
         this.queue = q;
         this.cus = c;
+        this.state = s;
     }
 
     @Override
-    public void execute(State state) {
+    public void execute() {
         state.currentTime = this.occurenceTime;
         if(state.freeCashRegisters == 0) {
             // no open registers

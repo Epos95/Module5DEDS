@@ -42,7 +42,17 @@ public class StoreState extends Observable {
     public ArriveIntervalCalculator arrive;
     public CashierSpeedCalculator cashierSpeed;
     public PickingTimeCalculator pickingTime;
-    public StoreState() {
+    public StoreState(
+            int cashregisters,
+            int maxcustomers,
+            double arriveinterval,
+            double cashiermin,
+            double cashiermax,
+            double pickingmin,
+            double pickingmax,
+            int openingtime,
+            int seed
+    ) {
         this.setChanged();
         this.notifyObservers();
         arrive = new ArriveIntervalCalculator(arriveInterval, randomizerSeed);

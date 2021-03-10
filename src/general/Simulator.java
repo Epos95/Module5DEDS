@@ -19,7 +19,7 @@ public class Simulator {
 		while (!state.isNotRunning) {
 			if(eventQueue.len() > 0) {
 			
-				eventQueue.pop().execute(state);
+				eventQueue.pop().execute();
 				state.notifyObservers();
 
 		}
