@@ -30,7 +30,6 @@ public class PickEvent extends GeneralEvent {
 
         // customer goes to the register
         state.freeCashRegisters -= 1;
-        state.updateView();
     }
 
     @Override
