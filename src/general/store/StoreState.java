@@ -3,7 +3,9 @@ package general.store;
 import general.State;
 import general.Event;
 
-public class StoreState extends State {
+import java.util.Observable;
+
+public class StoreState extends Observable {
     // Simulation parameters
     private final int cashRegisters = 4;
     private final int maxCustomers = 50;
@@ -33,7 +35,7 @@ public class StoreState extends State {
     private int freeCashRegisters = cashRegisters;
     CustomerCreator customerCreator;
 
-    StoreState() {
+    public StoreState() {
         ArriveIntervalCalculator arrive = new ArriveIntervalCalculator(arriveInterval, randomizerSeed);
         CashierSpeedCalculator cashierSpeed = new CashierSpeedCalculator(cashierMin, cashierMax, randomizerSeed);
         PickingTimeCalculator pickingTime = new PickingTimeCalculator(pickingMin, pickingMax, randomizerSeed);
