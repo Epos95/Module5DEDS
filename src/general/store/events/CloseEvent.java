@@ -1,4 +1,4 @@
-package general.store;
+package general.store.events;
 
 import general.GeneralEndEvent;
 import general.GeneralEvent;

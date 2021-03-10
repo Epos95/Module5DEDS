@@ -1,9 +1,9 @@
-package general.store;
+package general.store.events;
 
-import general.GeneralEvent;
 import general.EventQueue;
 import general.GeneralStartEvent;
 import general.State;
+import general.store.Customer;
 
 public class StartEvent extends GeneralStartEvent {
 

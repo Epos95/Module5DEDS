@@ -8,7 +8,7 @@ import java.util.Observable;
 public class StoreState extends Observable {
     // Simulation parameters
     protected final int cashRegisters = 4;
-    protected final int maxCustomers = 50;
+    public final int maxCustomers = 50;
     protected final double arriveInterval = 1; // num of customers an "hour"
     protected final double cashierMin = 2;
     protected final double cashierMax = 4;
@@ -27,15 +27,15 @@ public class StoreState extends Observable {
 
 
     // Other
-    protected CashRegisterQueue cQueue = new CashRegisterQueue();
-    private CustomerCreator cCreator = new CustomerCreator();
+    public CashRegisterQueue cQueue = new CashRegisterQueue();
+    public CustomerCreator cCreator = new CustomerCreator();
     private int currentAmountCustomers = 0;
     double currentTime;
 
     public boolean isOpen;
-    protected int currentCustomers;
+    public int currentCustomers;
 
-    protected int freeCashRegisters = cashRegisters;
+    public int freeCashRegisters = cashRegisters;
     CustomerCreator customerCreator;
 
     public StoreState() {

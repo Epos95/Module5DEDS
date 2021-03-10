@@ -1,8 +1,9 @@
-package general.store;
+package general.store.events;
 
 import general.GeneralEvent;
 import general.EventQueue;
 import general.State;
+import general.store.Customer;
 
 public class CustomerArrivedEvent extends GeneralEvent {
 
