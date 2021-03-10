@@ -23,6 +23,9 @@ public class StoreState extends Observable {
     private int cashRegisterDowntime;
     private int queueTime;
 
+    private int missedCustomers = 0;
+
+
     // Other
     protected CashRegisterQueue cQueue = new CashRegisterQueue();
     private CustomerCreator cCreator = new CustomerCreator();
@@ -69,5 +72,10 @@ public class StoreState extends Observable {
             // Throw error eller nåt?
         }
     }
+
+    public void missedCustomer() {
+        this.missedCustomers += 1;
+    }
+
 
 }

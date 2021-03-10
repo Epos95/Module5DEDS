@@ -11,6 +11,7 @@ public class CashierSpeedCalculator {
     }
 
     public double getTime() {
-        return random.next();
+        //return random.next();
+        return 2.0;
     }
 }

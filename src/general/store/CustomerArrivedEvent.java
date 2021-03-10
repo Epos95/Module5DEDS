@@ -18,6 +18,7 @@ public class CustomerArrivedEvent extends GeneralEvent {
         if (!state.isOpen) {
             // store is closed
             // update state and return
+            state.missedCustomer();
             return;
         } else {
             // aslong as the store is open we should generate new arrival events

@@ -19,6 +19,8 @@ public class PickEvent extends GeneralEvent {
             // no open registers
             // add customer to queue of customers
             // maybe return here?
+            //state.cQueue.add();
+            return;
         }
 
         // customer goes to the register

@@ -16,6 +16,7 @@ public class ArriveIntervalCalculator {
     }
 
     public double getTime() {
-        return random.next();
+        //return random.next();
+        return 2.0;
     }
 }
