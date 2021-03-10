@@ -18,6 +18,7 @@ public class CustomerArrivedEvent extends GeneralEvent {
 
     @Override
     public void execute(State state) {
+        state.currentTime = this.occurenceTime;
 
         if (!state.isOpen) {
             // store is closed

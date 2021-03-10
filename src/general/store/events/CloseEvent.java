@@ -14,6 +14,7 @@ public class CloseEvent extends GeneralEndEvent {
 
     @Override
     public void execute(State state) {
+        state.currentTime = this.occurenceTime;
         // closes the store
         state.isOpen = false;
     }

@@ -19,6 +19,7 @@ public class PickEvent extends GeneralEvent {
 
     @Override
     public void execute(State state) {
+        state.currentTime = this.occurenceTime;
         if(state.freeCashRegisters == 0) {
             // no open registers
             // add customer to queue of customers

@@ -18,6 +18,7 @@ public class PayEvent extends GeneralEvent {
 
     @Override
     public void execute(State state) {
+        state.currentTime = this.occurenceTime;
         state.currentCustomers -= 1;
 
         if (!state.cQueue.isEmpty()) {

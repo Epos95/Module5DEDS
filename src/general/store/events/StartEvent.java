@@ -15,6 +15,7 @@ public class StartEvent extends GeneralStartEvent {
 
     @Override
     public void execute(State state) {
+        state.currentTime = this.occurenceTime;
 
         // add a "customerArrivedEvent" to queue
         Customer c = state.newCustomer();
