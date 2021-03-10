@@ -1,10 +1,11 @@
 package general.store;
 
 import java.util.Observable;
+import java.util.Observer;
 
 import general.View;
 
-public class StoreSimulatorViewer extends View {
+public class StoreSimulatorViewer extends View implements Observer {
 
 	public void startView() {
 		System.out.println("PARAMETRAR");
@@ -35,7 +36,8 @@ public class StoreSimulatorViewer extends View {
 				+ "Genomsnitlig kötid: LäGG TILL te.");
 	}
 	
-	
+
+	@Override
 	public void update(Observable o, Object arg) {
 	    System.out.println(arg);
 		System.out.println("LJAEFJLSDFGJKGj");

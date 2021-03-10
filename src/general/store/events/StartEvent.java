@@ -21,6 +21,7 @@ public class StartEvent extends GeneralEvent {
         Customer c = state.newCustomer();
         this.queue.push(new CustomerArrivedEvent(queue, c, state.arrive.getTime()+state.currentTime));
 
+        state.notifyObservers();
     }
 
     @Override

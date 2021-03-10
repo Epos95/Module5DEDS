@@ -15,7 +15,7 @@ public class Simulator {
 		state.addObserver(viewer);
 		viewer.startView();
 		viewer.resultsView();
-		
+
 		while (!state.isNotRunning) {
 			if(eventQueue.len() > 0) {
 			
