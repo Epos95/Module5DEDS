@@ -1,22 +1,13 @@
 package general.store;
 
-import java.util.Objects;
-
 public class ArriveIntervalCalculator {
     ExponentialRandomStream random;
 
-    public ArriveIntervalCalculator(float arriveInterval, long seed) {
-        if (Objects.isNull(seed)) {
-
-        }
+    public ArriveIntervalCalculator(double arriveInterval, int seed) {
         random = new ExponentialRandomStream(arriveInterval, seed);
     }
 
-    public ArriveIntervalCalculator(double arriveInterval, int randomizerSeed) {
-    }
-
     public double getTime() {
-        //return random.next();
-        return 2.0;
+        return random.next();
     }
 }
