@@ -4,13 +4,25 @@ import java.util.ArrayList;
 
 public class EventQueue {
 	
-	private ArrayList<Event> queue = new ArrayList<Event>();
-	
-	public Event pop() {
-		return queue.get(0);
+	private ArrayList<GeneralEvent> queue = new ArrayList<GeneralEvent>();
+
+	public int len() {
+		return queue.size();
 	}
-	
-	void addToQueue(Event e) {
+	public GeneralEvent pop() {
+		GeneralEvent e = queue.get(0);
+		queue.remove(0);
+
+		return e;
+	}
+
+	public void push(GeneralEvent e) {
+		queue.add(e);
+	}
+
+
+	// maybe redo this sorting algo?
+	void addToQueue(GeneralEvent e) {
 		if (queue.size() == 0) {
 			queue.add(e);
 		}
