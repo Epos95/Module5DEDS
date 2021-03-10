@@ -7,6 +7,7 @@ import java.util.Observable;
 
 public class StoreState extends Observable {
     // Simulation parameters
+    // alla dessa ska komma via parametrar till konstruktor
     protected final int cashRegisters = 4;
     public final int maxCustomers = 50;
     protected final double arriveInterval = 1; // num of customers an "hour"
