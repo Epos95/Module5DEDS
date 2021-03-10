@@ -17,24 +17,24 @@ public class EventQueue {
 	}
 
 	public void push(GeneralEvent e) {
-		queue.add(e);
+		addToQueue(e);
 	}
 
 
 	// maybe redo this sorting algo?
-	void addToQueue(GeneralEvent e) {
+	public void addToQueue(GeneralEvent e) {
 		if (queue.size() == 0) {
 			queue.add(e);
 		}
 		else {
-		
-		for(int i = 0; i<queue.size(); i++) {
-			if (queue.get(i).occurenceTime > e.occurenceTime) {
-				queue.add(i, e);
-				break;
+			for(int i = 0; i<queue.size(); i++) {
+				if (queue.get(i).occurenceTime > e.occurenceTime) {
+					queue.add(i, e);
+					break;
+				}
 			}
 		}
-		}
+		System.out.println("added new thing");
 	}
-	
+
 }

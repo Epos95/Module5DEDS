@@ -30,7 +30,7 @@ public class CustomerArrivedEvent extends GeneralEvent {
             return;
         } else {
             // aslong as the store is open we should generate new arrival events
-            this.queue.push(new CustomerArrivedEvent(this.queue, state.newCustomer(), state.arrive.getTime()+state.currentTime, state));
+            this.queue.addToQueue(new CustomerArrivedEvent(this.queue, state.newCustomer(), state.arrive.getTime()+state.currentTime, state));
         }
 
         if (state.currentCustomers == state.maxCustomers) {
@@ -45,7 +45,7 @@ public class CustomerArrivedEvent extends GeneralEvent {
         state.currentCustomers += 1;
 
         // generate PickEvent
-        this.queue.push(new PickEvent(this.queue, this.cus, state.pickingTime.getTime(), state));
+        this.queue.addToQueue(new PickEvent(this.queue, this.cus, state.pickingTime.getTime(), state));
         // time might be fucky wucky here
 
     }

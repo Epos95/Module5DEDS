@@ -15,16 +15,15 @@ public class Simulator {
 	
 	public void run() {
 		
-		///* F�r att testa att saker funkar nedan
-
 		while (!state.isNotRunning) {
 			if(queue.len() > 0) {
 
 				queue.pop().execute();
 				state.notifyObservers();
-
+			} else {
+				break;
+			}
 		}
-	}
 	}
 	
 }
