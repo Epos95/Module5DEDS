@@ -6,10 +6,13 @@ import general.State;
 
 public class CustomerArrivedEvent extends GeneralEvent {
 
-    public CustomerArrivedEvent(EventQueue q) {
+    Customer cus;
+
+    public CustomerArrivedEvent(EventQueue q, Customer c) {
         // generate the occurencetime randomly
         this.occurenceTime = -1;
         this.queue = q;
+        this.cus = c;
     }
 
     @Override
@@ -22,13 +25,14 @@ public class CustomerArrivedEvent extends GeneralEvent {
             return;
         } else {
             // aslong as the store is open we should generate new arrival events
-            this.queue.push(new CustomerArrivedEvent(this.queue));
+            this.queue.push(new CustomerArrivedEvent(this.queue, state.newCustomer()));
         }
 
         if (state.currentCustomers == state.maxCustomers) {
             // store has too many customers
 
             // update state and return
+            state.missedCustomer();
             return;
         }
 
@@ -36,7 +40,7 @@ public class CustomerArrivedEvent extends GeneralEvent {
         state.currentCustomers += 1;
 
         // generate PickEvent
-        this.queue.push(new PickEvent(this.queue));
+        this.queue.push(new PickEvent(this.queue, this.cus));
         // time might be fucky wucky here
 
     }

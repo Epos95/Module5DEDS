@@ -2,9 +2,10 @@ package general.store;
 
 import general.GeneralEvent;
 import general.EventQueue;
+import general.GeneralStartEvent;
 import general.State;
 
-public class StartEvent extends GeneralEvent {
+public class StartEvent extends GeneralStartEvent {
 
     public StartEvent(EventQueue q) {
         // time should be set as the start time (0)
@@ -16,7 +17,8 @@ public class StartEvent extends GeneralEvent {
     public void execute(State state) {
 
         // add a "customerArrivedEvent" to queue
-        this.queue.push(new CustomerArrivedEvent(queue));
+        Customer c = state.newCustomer();
+        this.queue.push(new CustomerArrivedEvent(queue, c));
 
     }
 

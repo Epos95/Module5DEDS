@@ -1,10 +1,11 @@
 package general.store;
 
+import general.GeneralEndEvent;
 import general.GeneralEvent;
 import general.EventQueue;
 import general.State;
 
-public class CloseEvent extends GeneralEvent {
+public class CloseEvent extends GeneralEndEvent {
 
     public CloseEvent(EventQueue q) {
         this.occurenceTime = -1;

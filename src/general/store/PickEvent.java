@@ -6,11 +6,14 @@ import general.State;
 
 public class PickEvent extends GeneralEvent {
 
+    Customer cus;
+
     // this event might not need the event que?
-    public PickEvent(EventQueue q) {
+    public PickEvent(EventQueue q, Customer c) {
         // generate time here somehow
         this.occurenceTime = -1; // TODO
         this.queue = q;
+        this.cus = c;
     }
 
     @Override
@@ -19,7 +22,7 @@ public class PickEvent extends GeneralEvent {
             // no open registers
             // add customer to queue of customers
             // maybe return here?
-            //state.cQueue.add();
+            state.cQueue.add(this.cus);
             return;
         }
 
