@@ -7,6 +7,9 @@ public class CashierSpeedCalculator {
         random = new UniformRandomStream(min, max, seed);
     }
 
+    public CashierSpeedCalculator(double cashierMin, double cashierMax, int randomizerSeed) {
+    }
+
     public double getTime() {
         return random.next();
     }

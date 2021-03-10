@@ -7,6 +7,9 @@ public class PickingTimeCalculator {
         random = new UniformRandomStream(min, max, seed);
     }
 
+    public PickingTimeCalculator(double pickingMin, double pickingMax, int randomizerSeed) {
+    }
+
     public double getTime() {
         return random.next();
     }

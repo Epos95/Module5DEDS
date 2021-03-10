@@ -1,6 +1,6 @@
 package general;
 
-import Lab5.general.store.StoreSimulatorViewer;
+import general.store.StoreSimulatorViewer;
 import general.store.StoreState;
 
 public class Simulator {
