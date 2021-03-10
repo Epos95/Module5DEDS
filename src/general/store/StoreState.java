@@ -8,15 +8,15 @@ import java.util.Observable;
 public class StoreState extends Observable {
     // Simulation parameters
     // alla dessa ska komma via parametrar till konstruktor
-    protected final int cashRegisters = 4;
-    public final int maxCustomers = 50;
-    protected final double arriveInterval = 1; // num of customers an "hour"
-    protected final double cashierMin = 2;
-    protected final double cashierMax = 4;
-    protected final double pickingMin = 1;
-    protected final double pickingMax = 5;
-    protected final int openingTime = 0;
-    public final int randomizerSeed = 1234;
+    protected  int cashRegisters = 4;
+    public  int maxCustomers = 50;
+    protected  double arriveInterval = 1; // num of customers an "hour"
+    protected  double cashierMin = 2;
+    protected  double cashierMax = 4;
+    protected  double pickingMin = 1;
+    protected  double pickingMax = 5;
+    protected  int openingTime = 0;
+    public  int randomizerSeed = 1234;
 
     // Results
     private int buyers;
@@ -53,6 +53,15 @@ public class StoreState extends Observable {
             int openingtime,
             int seed
     ) {
+        this.cashRegisters = cashregisters;
+        this.maxCustomers = maxcustomers;
+        this.arriveInterval = arriveinterval;
+        this.cashierMin = cashiermin;
+        this.cashierMax = cashiermax;
+        this.pickingMin = pickingmin;
+        this.pickingMax = pickingmax;
+        this.openingTime = openingtime;
+        this.randomizerSeed = seed;
         this.setChanged();
         this.notifyObservers();
         arrive = new ArriveIntervalCalculator(arriveInterval, randomizerSeed);

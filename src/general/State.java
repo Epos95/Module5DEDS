@@ -9,8 +9,5 @@ public class State extends Observable{
 	public boolean isNotRunning = true;
 	public double currentTime;
 
-	public State(){
-		super();
-	}
 
 }
