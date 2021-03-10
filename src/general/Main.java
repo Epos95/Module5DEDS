@@ -25,6 +25,7 @@ public class Main {
 		s.addObserver(v);
 		v.startView();
 
+		s.isOpen = true;
 		EventQueue e = new EventQueue();
 		e.addToQueue(new StartEvent(e, s));
 		Simulator simulator = new Simulator(s, e);

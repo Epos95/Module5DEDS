@@ -30,6 +30,7 @@ public class CustomerArrivedEvent extends GeneralEvent {
             return;
         } else {
             // aslong as the store is open we should generate new arrival events
+            System.out.println("custom arrived event added new customer arrived event");
             this.queue.addToQueue(new CustomerArrivedEvent(this.queue, state.newCustomer(), state.arrive.getTime()+state.currentTime, state));
         }
 
@@ -37,6 +38,7 @@ public class CustomerArrivedEvent extends GeneralEvent {
             // store has too many customers
 
             // update state and return
+            System.out.println("missed customer!");
             state.missedCustomer();
             return;
         }
@@ -45,7 +47,8 @@ public class CustomerArrivedEvent extends GeneralEvent {
         state.currentCustomers += 1;
 
         // generate PickEvent
-        this.queue.addToQueue(new PickEvent(this.queue, this.cus, state.pickingTime.getTime(), state));
+        System.out.println("custom arrived event added new pick event");
+        this.queue.addToQueue(new PickEvent(this.queue, this.cus, state.pickingTime.getTime()+ state.currentTime, state));
         // time might be fucky wucky here
 
     }

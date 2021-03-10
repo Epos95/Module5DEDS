@@ -39,11 +39,8 @@ public class StoreSimulatorViewer extends View implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-	    System.out.println(arg);
-		System.out.println("LJAEFJLSDFGJKGj");
+	    System.out.println("got updated!");
 
-		System.out.println("Läggs till senare!");
-		
 	}
 
 }

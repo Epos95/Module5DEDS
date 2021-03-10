@@ -21,6 +21,7 @@ public class PickEvent extends GeneralEvent {
     @Override
     public void execute() {
         state.currentTime = this.occurenceTime;
+        System.out.println("lmao");
         if(state.freeCashRegisters == 0) {
             // no open registers
             // add customer to queue of customers
@@ -31,6 +32,8 @@ public class PickEvent extends GeneralEvent {
 
         // customer goes to the register
         state.freeCashRegisters -= 1;
+        System.out.println("added new payevent");
+        this.queue.addToQueue(new PayEvent(queue,cus,state.currentTime+state.cashierSpeed.getTime(),state));
     }
 
     @Override

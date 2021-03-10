@@ -26,6 +26,7 @@ public class PayEvent extends GeneralEvent {
 
         if (!state.cQueue.isEmpty()) {
             state.cQueue.dequeue();
+            System.out.println("added new payevent");
             this.queue.push(new PayEvent(this.queue, cus, state.cashierSpeed.getTime()+state.currentTime, state));
         } else {
             // no one is in queue, register opens up

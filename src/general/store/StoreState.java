@@ -33,8 +33,8 @@ public class StoreState extends State {
     private int currentAmountCustomers = 0;
     public double currentTime;
 
-    public boolean isOpen;
-    public int currentCustomers;
+    public boolean isOpen = true;
+    public int currentCustomers = 0;
 
     public int freeCashRegisters = cashRegisters;
     CustomerCreator customerCreator;
