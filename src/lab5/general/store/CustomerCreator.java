@@ -1,4 +1,4 @@
-package general.store;
+package lab5.general.store;
 
 public class CustomerCreator {
     private int idIterator = 0;

@@ -1,9 +1,9 @@
-package general.store.events;
+package lab5.general.store.events;
 
-import general.GeneralEvent;
-import general.EventQueue;
-import general.store.Customer;
-import general.store.StoreState;
+import lab5.general.EventQueue;
+import lab5.general.GeneralEvent;
+import lab5.general.store.Customer;
+import lab5.general.store.StoreState;
 
 public class PickEvent extends GeneralEvent {
 

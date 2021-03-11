@@ -1,6 +1,6 @@
-package general.store;
+package lab5.general.store;
 
-import general.State;
+import lab5.general.State;
 
 public class StoreState extends State {
     // Simulation parameters

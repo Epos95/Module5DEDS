@@ -1,9 +1,9 @@
-package general.store.events;
+package lab5.general.store.events;
 
-import general.GeneralEvent;
-import general.EventQueue;
-import general.State;
-import general.store.StoreState;
+import lab5.general.EventQueue;
+import lab5.general.GeneralEvent;
+import lab5.general.State;
+import lab5.general.store.StoreState;
 
 public class CloseEvent extends GeneralEvent {
 

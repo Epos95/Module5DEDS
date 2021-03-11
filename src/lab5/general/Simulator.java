@@ -1,8 +1,8 @@
-package general;
+package lab5.general;
 
-import general.store.StoreSimulatorViewer;
-import general.store.StoreState;
-import general.store.events.StartEvent;
+import lab5.general.store.StoreSimulatorViewer;
+import lab5.general.store.StoreState;
+import lab5.general.store.events.StartEvent;
 
 public class Simulator {
 	State state;

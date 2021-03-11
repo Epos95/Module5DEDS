@@ -1,4 +1,4 @@
-package general.store;
+package lab5.general.store;
 
 public class ArriveIntervalCalculator {
     ExponentialRandomStream random;

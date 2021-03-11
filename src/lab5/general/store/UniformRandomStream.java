@@ -1,5 +1,5 @@
 
-package general.store;
+package lab5.general.store;
 
 import java.util.Random;
 
