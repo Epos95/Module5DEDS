@@ -2,12 +2,18 @@ package lab5.general.store;
 
 import java.util.ArrayList;
 
+/**
+ * <p>
+ * Queue of customers waiting to checkout.
+ * </p>
+ * @author Anton Lundmark, Elliot Johansson Fryklöf, Karolina Rucinska and 
+ * Max Agnesund
+ */
 public class CashRegisterQueue {
     ArrayList<Customer> customerQueue = new ArrayList<>();
 
     /**
-     * 
-     * @param customer
+     * @param customer A customers id.
      */
     public void enqueue(Customer customer) {
         customerQueue.add(customer);
@@ -24,15 +30,14 @@ public class CashRegisterQueue {
     }
 
     /**
-     * 
-     * @return
+     * @return The customer removed from the queue.
      */
     public boolean isEmpty() {
         return customerQueue.size() == 0;
     }
     
     /**
-     * 
+     * @return true if queue empty, false otherwise.
      */
     public String toString() {
     	String s = "[";
@@ -45,6 +50,9 @@ public class CashRegisterQueue {
                 s += customerQueue.get(i).toString();
             }
         }
+     /**
+     * @return The customers in queue as a string.
+     */
 //    	for(Customer customer : customerQueue) {
 //    		s += customer.toString() + ", ";
 //    	}
