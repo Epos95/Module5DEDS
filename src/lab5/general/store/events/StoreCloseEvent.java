@@ -27,7 +27,8 @@ public class StoreCloseEvent extends Event {
     @Override
     public void execute() {
     	state.updateTime(occurenceTime);
-    	
+
+        state.sendUpdate("Stänger");
         // closes the store
         state.isOpen = false;
         
@@ -37,6 +38,5 @@ public class StoreCloseEvent extends Event {
         	queue.addToQueue(new EndEvent(queue, state, 999));
         }
         
-        state.sendUpdate("Stänger");
     }
 }
