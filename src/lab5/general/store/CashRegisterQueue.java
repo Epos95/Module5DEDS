@@ -35,10 +35,10 @@ public class CashRegisterQueue {
      * 
      */
     public String toString() {
-    	String s = "[";
+    	String s = "[ ";
     	
     	for(Customer customer : customerQueue) {
-    		s += customer.toString();
+    		s += customer.toString() + " ";
     	}
     	
     	return s + "]";

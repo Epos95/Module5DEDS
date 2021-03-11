@@ -77,9 +77,12 @@ public class StoreState extends State {
     /**
      * 
      */
-	public void sendUpdate(String eventString) {
+    public void sendUpdate(String eventString) {
+        sendUpdate(eventString, "---");
+    }
+	public void sendUpdate(String eventString, String customerId) {
         setChanged();
-        notifyObservers(eventString);
+        notifyObservers(new String[]{ eventString, customerId });
     }
     
     /**

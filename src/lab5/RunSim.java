@@ -14,7 +14,7 @@ public class RunSim {
 	 */
 	public static void main(String[] args) {
 		StoreState s = new StoreState(2, 5, 1.0,
-				2, 3, 0.5, 1.0, 0, 1234
+				2, 3, 0.5, 1.0, 10, 1234
 		);
 
 		StoreSimulationViewer v = new StoreSimulationViewer(s);

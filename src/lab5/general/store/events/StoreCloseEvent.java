@@ -33,7 +33,7 @@ public class StoreCloseEvent extends Event {
         
         // 
         if (state.currentCustomers == 0) {
-        	queue.addToQueue(new EndEvent(queue, state, occurenceTime));
+        	queue.addToQueue(new EndEvent(queue, state, 999));
         }
         
         state.sendUpdate("Stänger");

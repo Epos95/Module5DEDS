@@ -33,20 +33,20 @@ public class CustomerArrivedEvent extends Event {
     	state.updateTime(occurenceTime);
 
     	// aslong as the store is open we should generate new arrival events
-        if (!state.isOpen) {
+        if (state.isOpen) {
             this.queue.addToQueue(new CustomerArrivedEvent(this.queue, state, state.arrive.getTime() + state.currentTime, state.newCustomer()));
-        }
-
-        // store has too many customers
-        if (state.currentCustomers == state.MAXCUSTOMERS) {
-            state.missedCustomer();
-        } else {
-            state.currentCustomers += 1;        	
-        }
-
-        // generate PickEvent
-        this.queue.addToQueue(new ReadyToPayEvent(this.queue, state, state.pickingTime.getTime()+state.currentTime, this.customer));
         
-        state.sendUpdate("Ankomst");
+	        // store has too many customers
+	        if (state.currentCustomers == state.MAXCUSTOMERS) {
+	            state.missedCustomer();
+	        } else {
+	        	
+	        	// generate PickEvent
+	            state.currentCustomers += 1;
+		        this.queue.addToQueue(new ReadyToPayEvent(this.queue, state, state.pickingTime.getTime()+state.currentTime, this.customer));
+	        }
+        }
+        
+        state.sendUpdate("Ankomst", customer.toString());
     }
 }

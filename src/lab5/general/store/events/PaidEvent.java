@@ -39,20 +39,19 @@ public class PaidEvent extends Event {
         if (state.cQueue.isEmpty()) {
         	
         	// no one is in queue, register opens up
-        	state.freeCashRegisters += 1;
+        	state.openRegister();
         	
         	//
         	if (!state.isOpen) {
-        		this.queue.push(new EndEvent(this.queue, this.state, this.occurenceTime));
+        		this.queue.push(new EndEvent(this.queue, this.state, 999));
         	}
         	
         } else {
         	
         	//
-        	state.cQueue.dequeue();
-            this.queue.push(new PaidEvent(this.queue, state, state.cashierSpeed.getTime()+state.currentTime, this.customer));
+            this.queue.push(new PaidEvent(this.queue, state, state.cashierSpeed.getTime()+state.currentTime, state.cQueue.dequeue()));
         }
         
-        state.sendUpdate("Betalning");
+        state.sendUpdate("Betalning", customer.toString());
     }
 }

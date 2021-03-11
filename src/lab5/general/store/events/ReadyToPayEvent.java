@@ -38,11 +38,11 @@ public class ReadyToPayEvent extends Event {
 			state.cQueue.enqueue(this.customer);
 			state.queuedCustomer();
 		} else {
-			state.freeCashRegisters -= 1;
+			state.closeRegister();
 			this.queue.addToQueue(
 					new PaidEvent(queue, state, state.currentTime + state.cashierSpeed.getTime(), customer));
 		}
 
-		state.sendUpdate("Plock");
+		state.sendUpdate("Plock", customer.toString());
 	}
 }

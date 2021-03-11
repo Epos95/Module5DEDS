@@ -21,7 +21,6 @@ public class EventQueue {
 	public Event pop() {
 		Event e = queue.get(0);
 		queue.remove(0);
-
 		return e;
 	}
 
@@ -43,12 +42,13 @@ public class EventQueue {
 			queue.add(e);
 		}
 		else {
-			for(int i = 0; i<queue.size(); i++) {
+			for(int i = 0; i < queue.size(); i++) {
 				if (queue.get(i).occurenceTime > e.occurenceTime) {
 					queue.add(i, e);
-					break;
+					return;
 				}
 			}
+			queue.add(e);
 		}
 	}
 }

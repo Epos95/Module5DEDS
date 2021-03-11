@@ -30,6 +30,9 @@ public class StartEvent extends Event {
     	state.updateTime(occurenceTime);
 
     	//
+    	state.isOpen = true;
+    	
+    	//
 		this.queue.addToQueue(new StoreCloseEvent(queue, state, this.state.OPENINGTIME + this.state.currentTime));
 	
 		//

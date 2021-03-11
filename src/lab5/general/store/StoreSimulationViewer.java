@@ -59,11 +59,11 @@ public class StoreSimulationViewer extends View {
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
-		if (arg != "Start" && arg != "Stop") {
-			String columnNames = String.format("%s\t%9s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s",
+		if (((String[]) arg)[0] != "Start" && ((String[]) arg)[0] != "Stop") {
+			String columnNames = String.format("%.2f\t%9s\t%s\t%s\t%s\t%.2f\t%s\t%s\t%s\t%s\t%.2f\t%s\t%s",
 					s.currentTime, 
-					arg, 
-					"??", // Customer id
+					((String[]) arg)[0], 
+					((String[]) arg)[1],
 					s.isOpen ? 'Ö' : 'S', 
 					s.freeCashRegisters,
 					s.getTotalCashRegisterDowntime(), 
@@ -76,9 +76,9 @@ public class StoreSimulationViewer extends View {
 					s.getQueue());
 			System.out.println(columnNames);
 		} else {
-			String columnNames = String.format("%s\t%9s",
-					s.currentTime, 
-					arg);
+			String columnNames = String.format("%.2f\t%9s",
+					s.currentTime,
+					((String[]) arg)[0]);
 			System.out.println(columnNames);
 		}
 	}
