@@ -31,7 +31,7 @@ public class PaidEvent extends Event {
     @Override
     public void execute() {
     	state.updateTime(occurenceTime);
-    	
+        state.sendUpdate("Betalning", customer.toString());
         state.currentCustomers -= 1;
         state.paidCustomer();
         
@@ -52,7 +52,5 @@ public class PaidEvent extends Event {
         	//
             this.queue.push(new PaidEvent(this.queue, state, state.cashierSpeed.getTime()+state.currentTime, state.cQueue.dequeue()));
         }
-        
-        state.sendUpdate("Betalning", customer.toString());
     }
 }

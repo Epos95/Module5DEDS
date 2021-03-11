@@ -35,11 +35,19 @@ public class CashRegisterQueue {
      * 
      */
     public String toString() {
-    	String s = "[ ";
-    	
-    	for(Customer customer : customerQueue) {
-    		s += customer.toString() + " ";
-    	}
+    	String s = "[";
+
+    	for (int i = 0; i < customerQueue.size(); i++) {
+    	    if (i != customerQueue.size() - 1) {
+                s += customerQueue.get(i).toString() + ", ";
+            }
+    	    else {
+                s += customerQueue.get(i).toString();
+            }
+        }
+//    	for(Customer customer : customerQueue) {
+//    		s += customer.toString() + ", ";
+//    	}
     	
     	return s + "]";
     }

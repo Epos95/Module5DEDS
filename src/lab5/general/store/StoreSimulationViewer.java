@@ -62,7 +62,7 @@ public class StoreSimulationViewer extends View {
 	@Override
 	public void update(Observable o, Object arg) {
 		if (((String[]) arg)[0] != "Start" && ((String[]) arg)[0] != "Stop") {
-			String columnNames = String.format("%.2f\t%9s\t%s\t%s\t%s\t%.2f\t%s\t%s\t%s\t%s\t%.2f\t%s\t%s",
+			String columnNames = String.format("%.2f\t%9s\t%s\t%s\t%d\t%.2f\t%d\t%d\t%d\t%d\t%.2f\t%d\t%s",
 					s.currentTime, 
 					((String[]) arg)[0], 
 					((String[]) arg)[1],

@@ -31,22 +31,27 @@ public class CustomerArrivedEvent extends Event {
     @Override
     public void execute() {
 		state.updateTime(occurenceTime);
-    	
+
     	// aslong as the store is open we should generate new arrival events
         if (state.isOpen) {
             this.queue.addToQueue(new CustomerArrivedEvent(this.queue, state, state.arrive.getTime() + state.currentTime, state.newCustomer()));
         
 	        // store has too many customers
 	        if (state.currentCustomers == state.MAXCUSTOMERS) {
+                state.sendUpdate("Ankomst", customer.toString());
 	            state.missedCustomer();
 	        } else {
 	        	
 	        	// generate PickEvent
+                state.sendUpdate("Ankomst", customer.toString());
 	            state.currentCustomers += 1;
 		        this.queue.addToQueue(new ReadyToPayEvent(this.queue, state, state.pickingTime.getTime()+state.currentTime, this.customer));
 	        }
         }
+        else {
+            state.sendUpdate("Ankomst", customer.toString());
+        }
         
-        state.sendUpdate("Ankomst", customer.toString());
+
     }
 }
