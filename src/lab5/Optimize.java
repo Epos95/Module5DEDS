@@ -72,7 +72,6 @@ public class Optimize {
 	/**
 	 * METOD 2
 	 * Optimizes the amount of chekouts that should be open for max efficiency.
-	 * @param cashRegisters Amount of cash registers in the simulation.
 	 * @param maxCustomers Max customers allowed in store.
 	 * @param arriveInterval The interval for when customers arrive.
 	 * @param cashierMin Minimum checkout time.
@@ -117,7 +116,7 @@ public class Optimize {
 	 * @param cashierMax Maximum checkout time.
 	 * @param pickingMin Minimum picking time.
 	 * @param pickingMax Maxiumum picking time.
-	 * @param endTime The end time.
+	 * @param endTime Th end time.
 	 * @param seedRandomizer A randomizer of the seed.
 	 * @return The seed with 
 	 */
