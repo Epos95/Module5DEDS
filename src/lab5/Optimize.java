@@ -43,7 +43,7 @@ public class Optimize {
 	 * @param cashierMax
 	 * @param pickingMin
 	 * @param pickingMax
-	 * @param openingTime
+	 * @param endTime
 	 * @param seed
 	 * @return
 	 */
@@ -71,7 +71,7 @@ public class Optimize {
 	 * @param cashierMax
 	 * @param pickingMin
 	 * @param pickingMax
-	 * @param openingTime
+	 * @param endTime
 	 * @param seed
 	 * @return
 	 */
@@ -85,6 +85,7 @@ public class Optimize {
 		
 		// Execute simulations
 		for (int i = maxCustomers; i > 0; i--) {
+			System.out.println("testing new simulation");
 			StoreState r = runSimulation(i, maxCustomers, arriveInterval, cashierMin, cashierMax, pickingMin, pickingMax, endTime, seed);
 			if (r.getTotalMissedCustomers() <= bestResult) {
 				bestResultIndex = i;

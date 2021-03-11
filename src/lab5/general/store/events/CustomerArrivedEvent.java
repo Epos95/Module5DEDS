@@ -15,7 +15,7 @@ public class CustomerArrivedEvent extends Event {
      * 
      * @param q
      * @param c
-     * @param time
+     * @param o
      * @param s
      */
     public CustomerArrivedEvent(EventQueue q, StoreState s, double o, Customer c) {
