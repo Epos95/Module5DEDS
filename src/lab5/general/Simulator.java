@@ -21,7 +21,7 @@ public class Simulator {
 		while (!state.isNotRunning) {
 			if(queue.len() > 0) {
 				try {
-					Thread.sleep(500);
+					Thread.sleep(20);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}

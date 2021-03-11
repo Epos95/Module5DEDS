@@ -33,6 +33,7 @@ public class StoreCloseEvent extends Event {
         
         // 
         if (state.currentCustomers == 0) {
+        	state.closeStore();
         	queue.addToQueue(new EndEvent(queue, state, 999));
         }
         

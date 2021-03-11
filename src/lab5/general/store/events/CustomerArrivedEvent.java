@@ -30,8 +30,8 @@ public class CustomerArrivedEvent extends Event {
      */
     @Override
     public void execute() {
-    	state.updateTime(occurenceTime);
-
+		state.updateTime(occurenceTime);
+    	
     	// aslong as the store is open we should generate new arrival events
         if (state.isOpen) {
             this.queue.addToQueue(new CustomerArrivedEvent(this.queue, state, state.arrive.getTime() + state.currentTime, state.newCustomer()));

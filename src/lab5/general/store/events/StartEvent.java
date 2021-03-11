@@ -31,6 +31,7 @@ public class StartEvent extends Event {
 
     	//
     	state.isOpen = true;
+    	state.isRunning = true;
     	
     	//
 		this.queue.addToQueue(new StoreCloseEvent(queue, state, this.state.OPENINGTIME + this.state.currentTime));

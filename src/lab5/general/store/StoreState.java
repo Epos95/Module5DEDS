@@ -19,11 +19,13 @@ public class StoreState extends State {
     private double totalCashRegisterDowntime = 0;
     private double totalQueueTime = 0;
     private int totalQueueCustomers = 0;
-
+    private double storeActualCloseTime = 0;
+    
     // Other
     public CashRegisterQueue cQueue = new CashRegisterQueue();
     public CustomerCreator cCreator = new CustomerCreator();
     public boolean isOpen;
+    public boolean isRunning;
     public int currentCustomers;
     public int freeCashRegisters;
 
@@ -110,6 +112,11 @@ public class StoreState extends State {
             freeCashRegisters++;
         }
     }
+    
+    public void closeStore() {
+    	isRunning = false;
+    	storeActualCloseTime = currentTime;
+    }
 	
 	// UPDATES FOR RESULT
     public void missedCustomer() {
@@ -125,8 +132,10 @@ public class StoreState extends State {
     	double timeDelta = t - currentTime;
     	currentTime = t;
     	
-    	totalCashRegisterDowntime += timeDelta * freeCashRegisters;
-    	totalQueueTime += timeDelta * this.cQueue.customerQueue.size();
+    	if (isRunning) {
+    		totalQueueTime += timeDelta * this.cQueue.customerQueue.size();
+    		totalCashRegisterDowntime += timeDelta * freeCashRegisters;
+    	}
 	}
 
 	// GETTERS FOR ROW BY ROW UPDATES
@@ -150,5 +159,8 @@ public class StoreState extends State {
     }
     public String getQueue() {
     	return cQueue.toString();
+    }
+    public double getStoreActualCloseTime() {
+    	return storeActualCloseTime;
     }
 }

@@ -50,7 +50,7 @@ public class StoreSimulationViewer extends View {
 		System.out.println();
 		System.out.println(String.format("2) Total tid %s kassor varit lediga: %.2f te.", s.CASHREGISTERS, s.getTotalCashRegisterDowntime()));
 		System.out.println(String.format("Genomsnitlig ledig kassatid: %.2f te", s.getTotalCashRegisterDowntime() / s.CASHREGISTERS));
-		System.out.println(String.format("(dvs %.2f%% av tiden från öppning tills sista kunden betalat).", (s.getTotalCashRegisterDowntime() / s.CASHREGISTERS / s.currentTime) * 100));
+		System.out.println(String.format("(dvs %.2f%% av tiden från öppning tills sista kunden betalat).", (s.getTotalCashRegisterDowntime() / s.CASHREGISTERS / s.getStoreActualCloseTime()) * 100));
 		System.out.println();
 		System.out.println(String.format("3) Total tid %s kunder tvingats köa: %.2f te.", s.getTotalQueueCustomers(), s.getTotalQueueTime()));
 		System.out.println(String.format("Genomsnitlig kötid: %.2f te.", s.getTotalQueueTime() / s.getTotalQueueCustomers()));

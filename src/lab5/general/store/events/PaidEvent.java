@@ -42,7 +42,8 @@ public class PaidEvent extends Event {
         	state.openRegister();
         	
         	//
-        	if (!state.isOpen) {
+        	if (!state.isOpen && state.currentCustomers == 0) {
+        		state.closeStore();
         		this.queue.push(new EndEvent(this.queue, this.state, 999));
         	}
         	
