@@ -2,6 +2,13 @@ package lab5.general.store;
 
 import lab5.general.State;
 
+/**
+ * <p>
+ * Stores all variables of the simulation.
+ * </p>
+ * @author Anton Lundmark, Elliot Johansson Fryklöf, Karolina Rucinska and 
+ * Max Agnesund
+ */
 @SuppressWarnings("deprecation")
 public class StoreState extends State {
 	
@@ -36,15 +43,15 @@ public class StoreState extends State {
     
     /**
      * 
-     * @param cashRegisters
-     * @param maxCustomers
-     * @param arriveInterval
-     * @param cashierMin
-     * @param cashierMax
-     * @param pickingMin
-     * @param pickingMax
-     * @param openingTime
-     * @param seed
+     * @param cashRegisters Amount of cashregisters in use during simulation.
+     * @param maxCustomers Max amount of customers allowed in store.
+     * @param arriveInterval Interval for when customers arrive.
+     * @param cashierMin Minimum time for checkouts.
+     * @param cashierMax Maximum time for checkouts.
+     * @param pickingMin Minium time for picking.
+     * @param pickingMax Maximum time for picking.
+     * @param openingTime Time when the store opens.
+     * @param seed The seed of the simulation.
      */
     public StoreState(int cashRegisters, int maxCustomers, double arriveInterval,
                       double cashierMin, double cashierMax, double pickingMin,
@@ -77,7 +84,7 @@ public class StoreState extends State {
     }
 
     /**
-     * 
+     * Notifies View class of an update. 
      */
     public void sendUpdate(String eventString) {
         sendUpdate(eventString, "---");
@@ -88,15 +95,15 @@ public class StoreState extends State {
     }
     
     /**
-     * 
-     * @return
+     * Creates new customer.
+     * @return A new customer.
      */
     public Customer newCustomer() {
         return cCreator.getCustomer();
     }
 
-    /**
-     * 
+     /**
+     * Closes a cash register.
      */
     public void closeRegister() {
         if (freeCashRegisters > 0) {
@@ -105,7 +112,7 @@ public class StoreState extends State {
     }
 
     /**
-     * 
+     * Opens a cash register.
      */
     public void openRegister() {
         if (freeCashRegisters < CASHREGISTERS) {
@@ -113,21 +120,36 @@ public class StoreState extends State {
         }
     }
     
+/**
+* Closes the store.
+*/
     public void closeStore() {
     	isRunning = false;
     	storeActualCloseTime = currentTime;
     }
 	
-	// UPDATES FOR RESULT
+	/**
+     * Increases missed customers by 1.
+     */
     public void missedCustomer() {
         this.totalMissedCustomers += 1;
     }
+/**
+     * Increases paid customers by 1.
+     */
     public void paidCustomer() {
     	this.totalCustomers += 1;
     }
+	
+    /**
+     * Increases customers having had to queue by 1.
+     */	
     public void queuedCustomer() {
     	this.totalQueueCustomers += 1;
     }
+	    /**
+     * Updates the time.
+     */
 	public void updateTime(double t) {
     	double timeDelta = t - currentTime;
     	currentTime = t;
@@ -137,29 +159,69 @@ public class StoreState extends State {
     		totalCashRegisterDowntime += timeDelta * freeCashRegisters;
     	}
 	}
-
+	
+	    /**
+     * Getter for total customers of the store.
+     * @return Total customers.
+     */
 	// GETTERS FOR ROW BY ROW UPDATES
     public int getTotalCustomers() {
         return totalCustomers;
     }
+	
+	    /**
+     * Getter for missed customers.
+     * @return Total missed customers.
+     */
     public int getTotalMissedCustomers() {
         return totalMissedCustomers;
     }
+	
+	    /**
+     * Getter for total chash register downtime.
+     * @return Total chash register downtime.
+     */
     public double getTotalCashRegisterDowntime() {
         return totalCashRegisterDowntime;
     }
+	
+	    /**
+     * Getter for total time customers have had to queue.
+     * @return Total time customers have had to queue for.
+     */
     public double getTotalQueueTime() {
         return totalQueueTime;
     }
+	
+	
+    /**
+     * Getter for total amount of customers that had to queue.
+     * @return Total cusotmers who had to queue.
+     */
     public int getTotalQueueCustomers() {
     	return totalQueueCustomers;
     }
+	
+	    /**
+     * Getter for the customer queue length.
+     * @return The lenght of the customer queue.
+     */
     public int getQueueLength() {
     	return cQueue.customerQueue.size();
     }
+	
+	    /**
+     * Getter for the customer queue.
+     * @return The customer queue.
+     */
     public String getQueue() {
     	return cQueue.toString();
     }
+	
+	    /**
+     * Getter for the closing time of the store.
+     * @return The closing time of the store.
+     */
     public double getStoreActualCloseTime() {
     	return storeActualCloseTime;
     }

@@ -6,17 +6,24 @@ import lab5.general.State;
 import lab5.general.store.Customer;
 import lab5.general.store.StoreState;
 
+/**
+ * <p>
+ * Arrival event.
+ * </p>
+ * @author Anton Lundmark, Elliot Johansson Fryklöf, Karolina Rucinska and 
+ * Max Agnesund
+ */
 public class CustomerArrivedEvent extends Event {
 
     Customer customer;
     StoreState state;
 
     /**
-     * 
-     * @param q
-     * @param c
-     * @param o
-     * @param s
+     * Constructor for CustomerArrivedEvent.
+     * @param q The event queue.
+     * @param c The store state.
+     * @param o Time of arrival.
+     * @param s The arriving customer.
      */
     public CustomerArrivedEvent(EventQueue q, StoreState s, double o, Customer c) {
         this.occurenceTime = o;
@@ -26,7 +33,7 @@ public class CustomerArrivedEvent extends Event {
     }
 
     /**
-     * 
+     * Method to make the arrival event occur.
      */
     @Override
     public void execute() {
