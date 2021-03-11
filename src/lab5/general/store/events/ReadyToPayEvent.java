@@ -5,17 +5,24 @@ import lab5.general.Event;
 import lab5.general.store.Customer;
 import lab5.general.store.StoreState;
 
+/**
+ * <p>
+ * Event For a customer that has picked his wares and is ready to pay.
+ * </p>
+ * @author Anton Lundmark, Elliot Johansson Fryklöf, Karolina Rucinska and 
+ * Max Agnesund
+ */
 public class ReadyToPayEvent extends Event {
 
 	Customer customer;
 	StoreState state;
 
 	/**
-	 * 
-	 * @param q
-	 * @param s
-	 * @param time
-	 * @param c
+	 * Constructor for readyToPayEvent.
+	 * @param q The event queue.
+	 * @param s The store state.
+	 * @param time Time of event occuring.
+	 * @param c THe customer that performe this event.
 	 */
 	public ReadyToPayEvent(EventQueue q, StoreState s, double time, Customer c) {
 		// generate time here somehow
@@ -26,7 +33,10 @@ public class ReadyToPayEvent extends Event {
 	}
 
 	/**
-	 * 
+	 * <p>
+	 * Puts the customer in the cash register queue if there's none vailable.
+	 * Otherwise allows customer to pay.
+	 * </p>
 	 */
 	@Override
 	public void execute() {
