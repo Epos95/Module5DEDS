@@ -5,17 +5,24 @@ import lab5.general.Event;
 import lab5.general.store.Customer;
 import lab5.general.store.StoreState;
 
+/**
+ * <p>
+ * Event for a customer paying at the checkout.
+ * </p>
+ * @author Anton Lundmark, Elliot Johansson Fryklöf, Karolina Rucinska and 
+ * Max Agnesund
+ */
 public class PaidEvent extends Event {
 
     Customer customer;
     StoreState state;
 
     /**
-     * 
-     * @param q
-     * @param s
-     * @param o
-     * @param c
+     * Constructor for paidEvent.
+     * @param q The event queue.
+     * @param s The state of the store.
+     * @param o Time of event happening.
+     * @param c Customer performing event.
      */
     public PaidEvent(EventQueue q, StoreState s, double o, Customer c) {
         // generate time and stuff
@@ -26,7 +33,7 @@ public class PaidEvent extends Event {
     }
 
     /**
-     * 
+     * Method that makes the paying event happen.
      */
     @Override
     public void execute() {
