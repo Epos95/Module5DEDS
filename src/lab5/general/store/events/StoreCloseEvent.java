@@ -5,15 +5,21 @@ import lab5.general.Event;
 import lab5.general.State;
 import lab5.general.store.StoreState;
 
+    /**
+     * Constructor for the StoreCloseEvent.
+     * @param q The event queue.
+     * @param s The store state.
+     * @param o The time for the event happening.
+     */
 public class StoreCloseEvent extends Event {
 
     StoreState state;
 
     /**
-     * 
-     * @param q
-     * @param s
-     * @param o
+     * Constructor for the StoreCloseEvent.
+     * @param q The event queue.
+     * @param s The store state.
+     * @param o The time for the event happening.
      */
     public StoreCloseEvent(EventQueue q, StoreState s, double o) {
         this.occurenceTime = o;
@@ -22,7 +28,7 @@ public class StoreCloseEvent extends Event {
     }
 
     /**
-     * 
+     * Makes evetn happen by closing the store.
      */
     @Override
     public void execute() {
