@@ -4,7 +4,9 @@ import lab5.general.EventQueue;
 import lab5.general.Simulator;
 import lab5.general.store.StoreSimulationViewer;
 import lab5.general.store.StoreState;
+import lab5.general.store.events.EndEvent;
 import lab5.general.store.events.StartEvent;
+import lab5.general.store.events.StoreCloseEvent;
 
 /**
  * <p>
@@ -24,7 +26,6 @@ public class RunSim {
 	public static void main(String[] args) {
 		
 
-		/*
 		System.out.println("Simuleringsexempel 1\n");
 		StoreState s = new StoreState(
 				2, // Cash registers
@@ -36,9 +37,10 @@ public class RunSim {
 				1.0, // PickingMax
 				10, // OpeningTime
 				1234 // Seed
-		);*/
-		
-	
+		);
+
+
+		/*
 		System.out.println("Simuleringsexempel 2\n");
 		StoreState s = new StoreState(
 				2, // Cash registers
@@ -51,7 +53,10 @@ public class RunSim {
 				8, // OpeningTime
 				13 // Seed
 		);
-		
+
+		 */
+
+
 		
 		// View
 		StoreSimulationViewer v = new StoreSimulationViewer(s);
@@ -61,6 +66,8 @@ public class RunSim {
 		// Queue
 		EventQueue e = new EventQueue();
 		e.addToQueue(new StartEvent(e, s, 0));
+		//e.addToQueue(new StoreCloseEvent(e, s, s.OPENINGTIME));
+		e.addToQueue(new EndEvent(e,s,999));
 		
 		// Runs
 		Simulator simulator = new Simulator(s, e);

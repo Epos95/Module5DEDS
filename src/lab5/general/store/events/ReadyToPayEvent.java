@@ -50,8 +50,7 @@ public class ReadyToPayEvent extends Event {
             state.queuedCustomer();
         } else {
             state.closeRegister();
-            this.queue.addToQueue(
-                    new PaidEvent(queue, state, state.currentTime + state.cashierSpeed.getTime(), customer));
+            this.queue.addToQueue(new PaidEvent(queue, state, state.currentTime + state.cashierSpeed.getTime(), customer));
         }
 
     }

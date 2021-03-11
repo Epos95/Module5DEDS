@@ -54,9 +54,6 @@ public class CashRegisterQueue {
 		/**
 		 * @return The customers in queue as a string.
 		 */
-//    	for(Customer customer : customerQueue) {
-//    		s += customer.toString() + ", ";
-//    	}
 
 		return s + "]";
 	}

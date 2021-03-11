@@ -5,7 +5,9 @@ import java.util.Random;
 import lab5.general.EventQueue;
 import lab5.general.Simulator;
 import lab5.general.store.StoreState;
+import lab5.general.store.events.EndEvent;
 import lab5.general.store.events.StartEvent;
+import lab5.general.store.events.StoreCloseEvent;
 
 /**
  * Tries to optimize the parameters of the store, open checkouts etc.
@@ -67,7 +69,9 @@ public class Optimize {
 		
 		EventQueue e = new EventQueue();
 		e.addToQueue(new StartEvent(e, s, 0));
-		
+		e.addToQueue(new EndEvent(e, s, s.OPENINGTIME));
+		e.addToQueue(new StoreCloseEvent(e,s,999));
+
 		Simulator simulator = new Simulator(s, e);
 		simulator.run();
 		
@@ -99,8 +103,7 @@ public class Optimize {
 		
 		// Execute simulations
 		for (int i = 526; i > 0; i--) {
-			System.out.println("testing new simulation");
-			StoreState r = runSimulation(i, maxCustomers, arriveInterval, 
+			StoreState r = runSimulation(i, maxCustomers, arriveInterval,
 					cashierMin, cashierMax, pickingMin, pickingMax, endTime, 
 					seed);
 			if (r.getTotalMissedCustomers() <= bestResult) {
