@@ -53,6 +53,7 @@ public interface K {
 */
 
 // Ex 4
+  /*
   public static final int M = 100;
   public static final double L = 50;
 
@@ -65,6 +66,8 @@ public interface K {
   public static final int SEED = 42;
   public static final double END_TIME = 20.0d;
   public static final double STOP_TIME = 999.0d;
+
+   */
 // Ex 5
 //    public static final int M = 1400;
 //    public static final double L = 100;
@@ -95,17 +98,17 @@ public interface K {
 //    public static final double STOP_TIME = 999.0d;
 
 // Ex 7
-//    public static final int M = 1400;
-//    public static final double L = 2000;
-//
-//    public static final double LOW_COLLECTION_TIME = 0.45d;
-//    public static final double HIGH_COLLECTION_TIME = 0.65d;
-//
-//    public static final double LOW_PAYMENT_TIME = 0.2d;
-//    public static final double HIGH_PAYMENT_TIME = 0.3d;
-//
-//    public static final int SEED = 42;
-//    public static final double END_TIME = 20.0d;
-//    public static final double STOP_TIME = 999.0d;
+    public static final int M = 1400;
+    public static final double L = 2000;
+
+    public static final double LOW_COLLECTION_TIME = 0.45d;
+    public static final double HIGH_COLLECTION_TIME = 0.65d;
+
+    public static final double LOW_PAYMENT_TIME = 0.2d;
+    public static final double HIGH_PAYMENT_TIME = 0.3d;
+
+    public static final int SEED = 42;
+    public static final double END_TIME = 20.0d;
+    public static final double STOP_TIME = 999.0d;
 	
 }

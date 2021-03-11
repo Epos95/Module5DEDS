@@ -80,11 +80,11 @@ public class Optimize {
 			double cashierMin, double cashierMax, double pickingMin,
 			double pickingMax, double endTime, int seed) {
 		
-		int bestResult = 999;
+		int bestResult = 99999;
 		int bestResultIndex = 0;
 		
 		// Execute simulations
-		for (int i = maxCustomers; i > 0; i--) {
+		for (int i = 526; i > 0; i--) {
 			System.out.println("testing new simulation");
 			StoreState r = runSimulation(i, maxCustomers, arriveInterval, cashierMin, cashierMax, pickingMin, pickingMax, endTime, seed);
 			if (r.getTotalMissedCustomers() <= bestResult) {

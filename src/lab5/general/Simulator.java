@@ -20,11 +20,13 @@ public class Simulator {
 	public void run() {
 		while (!state.isNotRunning) {
 			if(queue.len() > 0) {
+				/*
 				try {
 					Thread.sleep(5);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
+				*/
 				queue.pop().execute();
 			} else {
 				break;
