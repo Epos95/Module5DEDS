@@ -6,15 +6,22 @@ import lab5.general.State;
 import lab5.general.store.Customer;
 import lab5.general.store.StoreState;
 
+/**
+ * <p>
+ * Event that starts the simulation.
+ * </p>
+ * @author Anton Lundmark, Elliot Johansson Fryklöf, Karolina Rucinska and 
+ * Max Agnesund
+ */
 public class StartEvent extends Event {
     StoreState state;
     EventQueue queue;
 
     /**
-     * 
-     * @param q
-     * @param s
-     * @param o
+     * Constructor for StartEvent.
+     * @param q The event queue.
+     * @param s The store state.
+     * @param o The time for the event occurance.
      */
     public StartEvent(EventQueue q, StoreState s, double o) {
         this.occurenceTime = o;
@@ -23,7 +30,7 @@ public class StartEvent extends Event {
     }
 
     /**
-     * 
+     * Makes the event happen.
      */
     @Override
     public void execute() {
