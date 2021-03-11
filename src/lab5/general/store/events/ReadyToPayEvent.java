@@ -45,6 +45,7 @@ public class ReadyToPayEvent extends Event {
 	public void execute() {
 		state.updateTime(occurenceTime);
 
+		state.sendUpdate("Plock", customer.toString());
 		// no open registers
 		// add customer to queue of customers
 		if (state.freeCashRegisters == 0) {
@@ -57,6 +58,5 @@ public class ReadyToPayEvent extends Event {
 							state.cashierSpeed.getTime(), customer));
 		}
 
-		state.sendUpdate("Plock", customer.toString());
 	}
 }
