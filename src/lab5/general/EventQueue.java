@@ -4,25 +4,41 @@ import java.util.ArrayList;
 
 public class EventQueue {
 	
-	private ArrayList<GeneralEvent> queue = new ArrayList<GeneralEvent>();
+	private ArrayList<Event> queue = new ArrayList<Event>();
 
+	/**
+	 * 
+	 * @return
+	 */
 	public int len() {
 		return queue.size();
 	}
-	public GeneralEvent pop() {
-		GeneralEvent e = queue.get(0);
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public Event pop() {
+		Event e = queue.get(0);
 		queue.remove(0);
 
 		return e;
 	}
 
-	public void push(GeneralEvent e) {
+	/**
+	 * 
+	 * @param e
+	 */
+	public void push(Event e) {
 		addToQueue(e);
 	}
 
 
-	// maybe redo this sorting algo?
-	public void addToQueue(GeneralEvent e) {
+	/**
+	 * 
+	 * @param e
+	 */
+	public void addToQueue(Event e) {
 		if (queue.size() == 0) {
 			queue.add(e);
 		}
@@ -36,5 +52,4 @@ public class EventQueue {
 		}
 		System.out.println("added new thing");
 	}
-
 }

@@ -1,42 +1,49 @@
 package lab5.general.store.events;
 
 import lab5.general.EventQueue;
-import lab5.general.GeneralEvent;
-import lab5.general.State;
+import lab5.general.Event;
 import lab5.general.store.Customer;
 import lab5.general.store.StoreState;
 
-public class PayEvent extends GeneralEvent {
+public class PaidEvent extends Event {
 
-    Customer cus;
+    Customer customer;
     StoreState state;
 
-    public PayEvent(EventQueue q, Customer c, double time, StoreState s) {
+    /**
+     * 
+     * @param q
+     * @param s
+     * @param o
+     * @param c
+     */
+    public PaidEvent(EventQueue q, StoreState s, double o, Customer c) {
         // generate time and stuff
-        this.occurenceTime = time;
+        this.occurenceTime = o;
         this.queue = q;
-        this.cus = c;
+        this.customer = c;
         this.state = s;
     }
 
+    /**
+     * 
+     */
     @Override
     public void execute() {
-        state.currentTime = this.occurenceTime;
+    	double timeDelta = this.occurenceTime - state.currentTime;
+    	state.currentTime = this.occurenceTime;
+    	// TODO: Time elapsed.
+    	
         state.currentCustomers -= 1;
 
         if (!state.cQueue.isEmpty()) {
             state.cQueue.dequeue();
             System.out.println("added new payevent");
-            this.queue.push(new PayEvent(this.queue, cus, state.cashierSpeed.getTime()+state.currentTime, state));
+            this.queue.push(new PaidEvent(this.queue, state, state.cashierSpeed.getTime()+state.currentTime, this.customer));
         } else {
             // no one is in queue, register opens up
             state.freeCashRegisters += 1;
         }
 
-    }
-
-    @Override
-    public double getTime() {
-        return 0;
     }
 }

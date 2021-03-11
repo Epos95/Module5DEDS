@@ -1,15 +1,14 @@
 package lab5.general.store;
 
 import java.util.Observable;
-import java.util.Observer;
-
 import lab5.general.View;
 
-public class StoreSimulatorViewer extends View {
+@SuppressWarnings("deprecation")
+public class StoreSimulationViewer extends View {
 
 	private StoreState s;
 
-	public StoreSimulatorViewer(StoreState storeState) {
+	public StoreSimulationViewer(StoreState storeState) {
 		this.s = storeState;
 	}
 

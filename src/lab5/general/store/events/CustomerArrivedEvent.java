@@ -1,27 +1,38 @@
 package lab5.general.store.events;
 
 import lab5.general.EventQueue;
-import lab5.general.GeneralEvent;
+import lab5.general.Event;
 import lab5.general.State;
 import lab5.general.store.Customer;
 import lab5.general.store.StoreState;
 
-public class CustomerArrivedEvent extends GeneralEvent {
+public class CustomerArrivedEvent extends Event {
 
-    Customer cus;
+    Customer customer;
     StoreState state;
 
-    public CustomerArrivedEvent(EventQueue q, Customer c, double time, StoreState s) {
-        // generate the occurencetime randomly
-        this.occurenceTime = time;
+    /**
+     * 
+     * @param q
+     * @param c
+     * @param time
+     * @param s
+     */
+    public CustomerArrivedEvent(EventQueue q, StoreState s, double o, Customer c) {
+        this.occurenceTime = o;
         this.queue = q;
-        this.cus = c;
+        this.customer = c;
         this.state = s;
     }
 
+    /**
+     * 
+     */
     @Override
     public void execute() {
-        state.currentTime = this.occurenceTime;
+    	double timeDelta = this.occurenceTime - state.currentTime;
+    	state.currentTime = this.occurenceTime;
+    	// TODO: Time elapsed.
 
         if (!state.isOpen) {
             // store is closed
@@ -31,7 +42,7 @@ public class CustomerArrivedEvent extends GeneralEvent {
         } else {
             // aslong as the store is open we should generate new arrival events
             System.out.println("custom arrived event added new customer arrived event");
-            this.queue.addToQueue(new CustomerArrivedEvent(this.queue, state.newCustomer(), state.arrive.getTime()+state.currentTime, state));
+            this.queue.addToQueue(new CustomerArrivedEvent(this.queue, state, state.arrive.getTime()+state.currentTime, state.newCustomer()));
         }
 
         if (state.currentCustomers == state.maxCustomers) {
@@ -48,13 +59,8 @@ public class CustomerArrivedEvent extends GeneralEvent {
 
         // generate PickEvent
         System.out.println("custom arrived event added new pick event");
-        this.queue.addToQueue(new PickEvent(this.queue, this.cus, state.pickingTime.getTime()+ state.currentTime, state));
+        this.queue.addToQueue(new ReadyToPayEvent(this.queue, state, state.pickingTime.getTime()+ state.currentTime, this.customer));
         // time might be fucky wucky here
 
-    }
-
-    @Override
-    public double getTime() {
-        return this.occurenceTime;
     }
 }
