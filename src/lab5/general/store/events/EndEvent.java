@@ -25,6 +25,7 @@ public class EndEvent extends Event {
      */
     @Override
     public void execute() {
+    	state.updateTime(occurenceTime);
     	state.isNotRunning = true;
         state.notifyObservers();
     }

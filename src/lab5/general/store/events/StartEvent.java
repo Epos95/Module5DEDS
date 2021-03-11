@@ -27,21 +27,16 @@ public class StartEvent extends Event {
      */
     @Override
     public void execute() {
-    	double timeDelta = this.occurenceTime - state.currentTime;
-    	state.currentTime = this.occurenceTime;
-    	// TODO: Time elapsed.
+    	state.updateTime(occurenceTime);
 
-    	// Stäng efter en viss tid.
-		this.queue.addToQueue(new StoreCloseEvent(queue, state, this.state.openingTime + this.state.currentTime));
+    	//
+		this.queue.addToQueue(new StoreCloseEvent(queue, state, this.state.OPENINGTIME + this.state.currentTime));
 	
-		// Ny kund
-    	if (state.currentCustomers < state.maxCustomers) {
-    		Customer c = state.newCustomer();
-    		this.queue.addToQueue(new CustomerArrivedEvent(queue, state, state.arrive.getTime()+state.currentTime,c));
+		//
+    	if (state.currentCustomers < state.MAXCUSTOMERS) {
+    		this.queue.addToQueue(new CustomerArrivedEvent(queue, state, state.arrive.getTime() + state.currentTime, state.newCustomer()));
     	}
         
-    	
-    	
         state.notifyObservers();
     }
 }

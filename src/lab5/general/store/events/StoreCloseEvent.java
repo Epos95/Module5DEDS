@@ -26,11 +26,16 @@ public class StoreCloseEvent extends Event {
      */
     @Override
     public void execute() {
-    	double timeDelta = this.occurenceTime - state.currentTime;
-    	state.currentTime = this.occurenceTime;
-    	// TODO: Time elapsed.
+    	state.updateTime(occurenceTime);
     	
         // closes the store
         state.isOpen = false;
+        
+        // 
+        if (state.currentCustomers == 0) {
+        	queue.addToQueue(new EndEvent(queue, state, occurenceTime));
+        }
+        
+        state.notifyObservers();
     }
 }

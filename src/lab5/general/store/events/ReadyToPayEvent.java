@@ -30,22 +30,17 @@ public class ReadyToPayEvent extends Event {
      */
     @Override
     public void execute() {
-    	double timeDelta = this.occurenceTime - state.currentTime;
-    	state.currentTime = this.occurenceTime;
-    	// TODO: Time elapsed.
+    	state.updateTime(occurenceTime);
     	
-        System.out.println("lmao");
+    	// no open registers
+        // add customer to queue of customers
         if(state.freeCashRegisters == 0) {
-            // no open registers
-            // add customer to queue of customers
-            // maybe return here?
             state.cQueue.enqueue(this.customer);
-            return;
+        } else {
+        	state.freeCashRegisters -= 1;
+        	this.queue.addToQueue(new PaidEvent(queue,state,state.currentTime+state.cashierSpeed.getTime(),customer));
         }
 
-        // customer goes to the register
-        state.freeCashRegisters -= 1;
-        System.out.println("added new payevent");
-        this.queue.addToQueue(new PaidEvent(queue,state,state.currentTime+state.cashierSpeed.getTime(),customer));
+        state.notifyObservers();
     }
 }

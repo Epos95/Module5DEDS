@@ -3,7 +3,7 @@ package lab5.general.store;
 import java.util.ArrayList;
 
 public class CashRegisterQueue {
-    private ArrayList<Customer> customerQueue = new ArrayList<>();
+    ArrayList<Customer> customerQueue = new ArrayList<>();
 
     /**
      * 

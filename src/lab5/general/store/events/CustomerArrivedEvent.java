@@ -30,37 +30,23 @@ public class CustomerArrivedEvent extends Event {
      */
     @Override
     public void execute() {
-    	double timeDelta = this.occurenceTime - state.currentTime;
-    	state.currentTime = this.occurenceTime;
-    	// TODO: Time elapsed.
+    	state.updateTime(occurenceTime);
 
+    	// aslong as the store is open we should generate new arrival events
         if (!state.isOpen) {
-            // store is closed
-            // update state and return
+            this.queue.addToQueue(new CustomerArrivedEvent(this.queue, state, state.arrive.getTime() + state.currentTime, state.newCustomer()));
+        }
+
+        // store has too many customers
+        if (state.currentCustomers == state.MAXCUSTOMERS) {
             state.missedCustomer();
-            return;
         } else {
-            // aslong as the store is open we should generate new arrival events
-            System.out.println("custom arrived event added new customer arrived event");
-            this.queue.addToQueue(new CustomerArrivedEvent(this.queue, state, state.arrive.getTime()+state.currentTime, state.newCustomer()));
+            state.currentCustomers += 1;        	
         }
-
-        if (state.currentCustomers == state.maxCustomers) {
-            // store has too many customers
-
-            // update state and return
-            System.out.println("missed customer!");
-            state.missedCustomer();
-            return;
-        }
-
-        // customer got let in
-        state.currentCustomers += 1;
 
         // generate PickEvent
-        System.out.println("custom arrived event added new pick event");
-        this.queue.addToQueue(new ReadyToPayEvent(this.queue, state, state.pickingTime.getTime()+ state.currentTime, this.customer));
-        // time might be fucky wucky here
-
+        this.queue.addToQueue(new ReadyToPayEvent(this.queue, state, state.pickingTime.getTime()+state.currentTime, this.customer));
+        
+        state.notifyObservers();
     }
 }

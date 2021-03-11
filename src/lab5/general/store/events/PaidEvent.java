@@ -30,20 +30,27 @@ public class PaidEvent extends Event {
      */
     @Override
     public void execute() {
-    	double timeDelta = this.occurenceTime - state.currentTime;
-    	state.currentTime = this.occurenceTime;
-    	// TODO: Time elapsed.
+    	state.updateTime(occurenceTime);
     	
         state.currentCustomers -= 1;
-
-        if (!state.cQueue.isEmpty()) {
-            state.cQueue.dequeue();
-            System.out.println("added new payevent");
-            this.queue.push(new PaidEvent(this.queue, state, state.cashierSpeed.getTime()+state.currentTime, this.customer));
+        state.paidCustomer();
+        
+        //
+        if (state.cQueue.isEmpty()) {
+        	
+        	// no one is in queue, register opens up
+        	state.freeCashRegisters += 1;
+        	
+        	//
+        	if (!state.isOpen) {
+        		this.queue.push(new EndEvent(this.queue, this.state, this.occurenceTime));
+        	}
+        	
         } else {
-            // no one is in queue, register opens up
-            state.freeCashRegisters += 1;
+        	
+        	//
+        	state.cQueue.dequeue();
+            this.queue.push(new PaidEvent(this.queue, state, state.cashierSpeed.getTime()+state.currentTime, this.customer));
         }
-
     }
 }

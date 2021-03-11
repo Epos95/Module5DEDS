@@ -6,27 +6,25 @@ import lab5.general.State;
 public class StoreState extends State {
 	
     // Simulation parameters
-    protected int cashRegisters;
-    public int maxCustomers;
-    protected double arriveInterval;
-    protected double cashierMin, cashierMax, pickingMin, pickingMax;
-    public double openingTime;
-    public long randomizerSeed;
+    public final int CASHREGISTERS;
+    public final int MAXCUSTOMERS;
+    public final double ARRIVALINTERVAL;
+    public final double CACHIERMIN, CACHIERMAX, PICKINGMIN, PICKINGMAX;
+    public final double OPENINGTIME;
+    public final long RANDOMIZERSEED;
 
     // Results
     private int totalCustomers = 0;
-    private int totalBuyers = 0;
-    private int totalMissedBuyers = 0;
+    private int totalMissedCustomers = 0;
     private int totalCashRegisterDowntime = 0;
     private int totalQueueTime = 0;
-    private int missedCustomers = 0;
 
     // Other
     public CashRegisterQueue cQueue = new CashRegisterQueue();
     public CustomerCreator cCreator = new CustomerCreator();
-    public boolean isOpen = true;
-    public int currentCustomers = 0;
-    public int freeCashRegisters = cashRegisters;
+    public boolean isOpen;
+    public int currentCustomers;
+    public int freeCashRegisters;
 
     // Calculators
     public ArriveIntervalCalculator arrive;
@@ -49,22 +47,29 @@ public class StoreState extends State {
                       double cashierMin, double cashierMax, double pickingMin,
                       double pickingMax, int openingTime, int seed) {
 
-        this.cashRegisters = cashRegisters;
-        this.maxCustomers = maxCustomers;
-        this.arriveInterval = arriveInterval;
-        this.cashierMin = cashierMin;
-        this.cashierMax = cashierMax;
-        this.pickingMin = pickingMin;
-        this.pickingMax = pickingMax;
-        this.openingTime = openingTime;
-        this.randomizerSeed = seed;
+    	//
+        this.CASHREGISTERS = cashRegisters;
+        this.MAXCUSTOMERS = maxCustomers;
+        this.ARRIVALINTERVAL = arriveInterval;
+        this.CACHIERMIN = cashierMin;
+        this.CACHIERMAX = cashierMax;
+        this.PICKINGMIN = pickingMin;
+        this.PICKINGMAX = pickingMax;
+        this.OPENINGTIME = openingTime;
+        this.RANDOMIZERSEED = seed;
         
+        //
+        this.currentCustomers = 0;
+        this.freeCashRegisters = CASHREGISTERS;
+        
+        //
         this.setChanged();
         this.notifyObservers();
         
-        arrive = new ArriveIntervalCalculator(arriveInterval, randomizerSeed);
-        cashierSpeed = new CashierSpeedCalculator(cashierMin, cashierMax, randomizerSeed);
-        pickingTime = new PickingTimeCalculator(pickingMin, pickingMax, randomizerSeed);
+        //
+        arrive = new ArriveIntervalCalculator(arriveInterval, RANDOMIZERSEED);
+        cashierSpeed = new CashierSpeedCalculator(cashierMin, cashierMax, RANDOMIZERSEED);
+        pickingTime = new PickingTimeCalculator(pickingMin, pickingMax, RANDOMIZERSEED);
 
     }
 
@@ -84,28 +89,15 @@ public class StoreState extends State {
         if (freeCashRegisters > 0) {
             freeCashRegisters--;
         }
-        else {
-            // Throw error eller nåt?
-        }
     }
 
     /**
      * 
      */
     public void openRegister() {
-        if (freeCashRegisters < cashRegisters) {
+        if (freeCashRegisters < CASHREGISTERS) {
             freeCashRegisters++;
         }
-        else {
-            // Throw error eller nåt?
-        }
-    }
-
-    /**
-     * 
-     */
-    public void missedCustomer() {
-        this.missedCustomers += 1;
     }
 
     /**
@@ -115,48 +107,33 @@ public class StoreState extends State {
         setChanged();
         notifyObservers();
     }
+	
+	// UPDATES FOR RESULT
+    public void missedCustomer() {
+        this.totalMissedCustomers += 1;
+    }
+    public void paidCustomer() {
+    	this.totalCustomers += 1;
+    }
+	public void updateTime(double t) {
+    	double timeDelta = t - currentTime;
+    	currentTime = t;
+    	
+    	totalCashRegisterDowntime += timeDelta * freeCashRegisters;
+    	totalQueueTime += timeDelta * this.cQueue.customerQueue.size();
+	}
 
-	// GETTERS/SETTERS FOR ROW BY ROW UPDATES
-    public int getCashRegisters() {
-        return cashRegisters;
-    }
-    public int getMaxCustomers() {
-        return maxCustomers;
-    }
-    public String get_pMin() {
-        return Double.toString(pickingMin);
-    }
-    public String get_pMax() {
-        return Double.toString(pickingMax);
-    }
-    public String get_kMin() {
-        return Double.toString(cashierMin);
-    }
-    public String get_kMax() {
-        return Double.toString(cashierMax);
-    }
-    public double getLambda() {
-        return arriveInterval;
-    }
-    public long getSeed() {
-        return randomizerSeed;
-    }
+	// GETTERS FOR ROW BY ROW UPDATES
     public int getTotalCustomers() {
         return totalCustomers;
     }
-    public int getTotalBuyers() {
-        return totalBuyers;
-    }
     public int getTotalMissedBuyers() {
-        return totalMissedBuyers;
+        return totalMissedCustomers;
     }
     public int getTotalCashRegisterDowntime() {
         return totalCashRegisterDowntime;
     }
     public int getTotalQueueTime() {
         return totalQueueTime;
-    }
-    public int getMissedCustomers() {
-        return missedCustomers;
     }
 }

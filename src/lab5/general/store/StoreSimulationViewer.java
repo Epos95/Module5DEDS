@@ -15,13 +15,13 @@ public class StoreSimulationViewer extends View {
 	public void startView() {
 		System.out.println("PARAMETRAR");
 		System.out.println("==========");
-		System.out.println("Antal kassor, N..........: " + s.getCashRegisters());
-		System.out.println("Max som ryms, M..........: " + s.getMaxCustomers());
-		System.out.println("Ankomshastighet, lambda..: " + s.getLambda());
-		System.out.println("Plocktider, [P_min..Pmax]: [" + s.get_pMin() + ".." + s.get_pMax() + "]");
-		System.out.println("Betaltider, [K_min..Kmax]: [" + s.get_kMin() + ".." + s.get_kMax() + "]");
-		System.out.println("Frö, f...................: " + s.getSeed());
-		System.out.println("");
+		System.out.println("Antal kassor, N..........: " + s.CASHREGISTERS);
+		System.out.println("Max som ryms, M..........: " + s.MAXCUSTOMERS);
+		System.out.println("Ankomshastighet, lambda..: " + s.ARRIVALINTERVAL);
+		System.out.println("Plocktider, [P_min..Pmax]: [" + s.PICKINGMIN + ".." + s.PICKINGMAX + "]");
+		System.out.println("Betaltider, [K_min..Kmax]: [" + s.CACHIERMIN + ".." + s.CACHIERMAX + "]");
+		System.out.println("Frö, f...................: " + s.RANDOMIZERSEED);
+		System.out.println();
 		
 		System.out.println("FÖRLOPP");
 		System.out.println("=======");
