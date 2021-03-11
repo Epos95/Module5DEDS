@@ -5,12 +5,6 @@ import lab5.general.Event;
 import lab5.general.State;
 import lab5.general.store.StoreState;
 
-    /**
-     * Constructor for the StoreCloseEvent.
-     * @param q The event queue.
-     * @param s The store state.
-     * @param o The time for the event happening.
-     */
 public class StoreCloseEvent extends Event {
 
     StoreState state;
