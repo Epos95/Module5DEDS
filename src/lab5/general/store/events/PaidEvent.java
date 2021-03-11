@@ -47,7 +47,6 @@ public class PaidEvent extends Event {
         	state.openRegister();
         	
         	//
-            state.sendUpdate("Betalning", customer.toString());
         	if (!state.isOpen && state.currentCustomers == 0) {
         		state.closeStore();
         		this.queue.push(new EndEvent(this.queue, this.state, 999));
