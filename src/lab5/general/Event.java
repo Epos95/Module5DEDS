@@ -12,5 +12,8 @@ abstract public class Event {
 	protected EventQueue queue;
 	protected double occurenceTime;
 	
+/**
+* Base for the "performe me" method of all events.
+*/
 	abstract public void execute();
 }
