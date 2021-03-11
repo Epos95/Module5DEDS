@@ -24,7 +24,7 @@ public class Optimize {
 		// --
 		System.out.println("Söker efter det optimala antalet kassor!");
 		
-		// Execute optimize
+		// Execute optimize with values from K
 		int resultat = optimizeCashierAmount(
 				K.M, 		
 				K.L, 	
@@ -37,11 +37,14 @@ public class Optimize {
 		);
 		
 		// --
-		System.out.println(String.format("Det optimala antalet kassor är %s.", resultat));
+		System.out.println(String.format("Det optimala antalet kassor är %s.",
+				resultat));
 	}
 	
 	/**
 	 * METOD 1
+	 * Runs the store simulation with given arguments.
+	 * 
 	 * @param cashRegisters
 	 * @param maxCustomers
 	 * @param arriveInterval
@@ -51,14 +54,16 @@ public class Optimize {
 	 * @param pickingMax
 	 * @param endTime
 	 * @param seed
-	 * @return
+	 * @return All the data about the simulation.
 	 */
 	private static StoreState runSimulation(
 				int cashRegisters, int maxCustomers, double arriveInterval,
 				double cashierMin, double cashierMax, double pickingMin,
 				double pickingMax, double endTime, int seed) {
 
-		StoreState s = new StoreState(cashRegisters, maxCustomers, arriveInterval, cashierMin, cashierMax, pickingMin, pickingMax, endTime, seed);
+		StoreState s = new StoreState(cashRegisters, maxCustomers,
+				arriveInterval, cashierMin, cashierMax, pickingMin, pickingMax,
+				endTime, seed);
 		
 		EventQueue e = new EventQueue();
 		e.addToQueue(new StartEvent(e, s, 0));
@@ -71,16 +76,18 @@ public class Optimize {
 	
 	/**
 	 * METOD 2
-	 * Optimizes the amount of chekouts that should be open for max efficiency.
+	 * Optimizes the amount of cash registers that should be open for maximum
+	 * efficiency.
+	 * 
 	 * @param maxCustomers Max customers allowed in store.
 	 * @param arriveInterval The interval for when customers arrive.
 	 * @param cashierMin Minimum checkout time.
 	 * @param cashierMax Maximum checkout time.
 	 * @param pickingMin Minimum picking time.
-	 * @param pickingMax Maxiumum picking time.
+	 * @param pickingMax Maximum picking time.
 	 * @param endTime The end time.
 	 * @param seed The seed of the simulation.
-	 * @return The amount of cashiers that yield the best results
+	 * @return The amount of cashiers that yield the best results.
 	 */
 	private static int optimizeCashierAmount(
 			int maxCustomers, double arriveInterval,
@@ -93,7 +100,9 @@ public class Optimize {
 		// Execute simulations
 		for (int i = 526; i > 0; i--) {
 			System.out.println("testing new simulation");
-			StoreState r = runSimulation(i, maxCustomers, arriveInterval, cashierMin, cashierMax, pickingMin, pickingMax, endTime, seed);
+			StoreState r = runSimulation(i, maxCustomers, arriveInterval, 
+					cashierMin, cashierMax, pickingMin, pickingMax, endTime, 
+					seed);
 			if (r.getTotalMissedCustomers() <= bestResult) {
 				bestResultIndex = i;
 				bestResult = r.getTotalMissedCustomers();
@@ -102,7 +111,8 @@ public class Optimize {
 			}
 		}
 		
-		System.out.println(String.format("Optimize, kassor: %s, missad customers %s", bestResultIndex, bestResult));
+		System.out.println(String.format("Optimize, kassor: %s, missad"
+				+ " customers %s", bestResultIndex, bestResult));
 		
 		// Return amount of cashiers that yield the best results
 		return bestResultIndex;
@@ -110,26 +120,32 @@ public class Optimize {
 	
 	/**
 	 * Metod 3
+	 * Repeats Metod 2 a hundred times until it finds a better solution for
+	 * the amount of cashiers that is optimal.
+	 * 
 	 * @param maxCustomers Max customers allowed in store.
 	 * @param arriveInterval The interval for when customers arrive.
 	 * @param cashierMin Minimum checkout time.
 	 * @param cashierMax Maximum checkout time.
 	 * @param pickingMin Minimum picking time.
-	 * @param pickingMax Maxiumum picking time.
-	 * @param endTime Th end time.
+	 * @param pickingMax Maximum picking time.
+	 * @param endTime The end time.
 	 * @param seedRandomizer A randomizer of the seed.
-	 * @return The seed with 
+	 * @return The amount of cashiers that yield the best results.
 	 */
-	private static int optimizeCashierAmountWithRandomSeed(int maxCustomers, double arriveInterval,
-			double cashierMin, double cashierMax, double pickingMin,
-			double pickingMax, double endTime, int seedRandomizer) {
+	private static int optimizeCashierAmountWithRandomSeed(
+			int maxCustomers, double arriveInterval, double cashierMin,
+			double cashierMax, double pickingMin, double pickingMax,
+			double endTime,	int seedRandomizer) {
 		
 		Random randomizer = new Random(seedRandomizer);
 		int worst = 0;
 		
 		// Count up to 100 and restart if value changes.
 		for (int i = 0; i < 100; i++) {
-			int resultFound = optimizeCashierAmount(maxCustomers, arriveInterval, cashierMin, cashierMax, pickingMin, pickingMax, endTime, randomizer.nextInt());
+			int resultFound = optimizeCashierAmount(maxCustomers,
+					arriveInterval, cashierMin, cashierMax, pickingMin,
+					pickingMax, endTime, randomizer.nextInt());
 			if (resultFound > worst) {
 				i = 0;
 				worst = resultFound;

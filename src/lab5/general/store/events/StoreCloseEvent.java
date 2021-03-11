@@ -22,7 +22,7 @@ public class StoreCloseEvent extends Event {
     }
 
     /**
-     * Makes evetn happen by closing the store.
+     * Makes events happen by closing the store.
      */
     @Override
     public void execute() {

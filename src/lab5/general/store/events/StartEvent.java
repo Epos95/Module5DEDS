@@ -21,7 +21,7 @@ public class StartEvent extends Event {
      * Constructor for StartEvent.
      * @param q The event queue.
      * @param s The store state.
-     * @param o The time for the event occurance.
+     * @param o The time for the event occurrence.
      */
     public StartEvent(EventQueue q, StoreState s, double o) {
         this.occurenceTime = o;
@@ -41,11 +41,14 @@ public class StartEvent extends Event {
     	state.isRunning = true;
     	
     	//
-		this.queue.addToQueue(new StoreCloseEvent(queue, state, this.state.OPENINGTIME + this.state.currentTime));
+		this.queue.addToQueue(new StoreCloseEvent(queue, state,
+				this.state.OPENINGTIME + this.state.currentTime));
 	
 		//
     	if (state.currentCustomers < state.MAXCUSTOMERS) {
-    		this.queue.addToQueue(new CustomerArrivedEvent(queue, state, state.arrive.getTime() + state.currentTime, state.newCustomer()));
+    		this.queue.addToQueue(new CustomerArrivedEvent(queue, state,
+    				state.arrive.getTime() + state.currentTime,
+    				state.newCustomer()));
     	}
         
     	state.sendUpdate("Start");

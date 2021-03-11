@@ -12,10 +12,10 @@ import java.util.Observer;
 
 @SuppressWarnings("deprecation")
 public abstract class View implements Observer {
-	
+
 	/**
-	 * Base update.
-	 * Used to update the view whenever a change in the state occurs.
+	 * Base update. Used to update the view whenever a change in the state occurs.
 	 */
-	public void update(Observable o, Object arg) {}
+	public void update(Observable o, Object arg) {
+	}
 }

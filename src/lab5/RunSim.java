@@ -27,7 +27,7 @@ public class RunSim {
 		/*
 		System.out.println("Simuleringsexempel 1\n");
 		StoreState s = new StoreState(
-				2, // Cashregisters
+				2, // Cash registers
 				5, // Max customers
 				1.0, // Arrive Interval
 				2, // CashierMin
@@ -41,7 +41,7 @@ public class RunSim {
 	
 		System.out.println("Simuleringsexempel 2\n");
 		StoreState s = new StoreState(
-				2, // Cashregisters
+				2, // Cash registers
 				7, // Max customers
 				3.0, // Arrive Interval
 				0.35, // CashierMin
@@ -53,20 +53,20 @@ public class RunSim {
 		);
 		
 		
-		// Vy
+		// View
 		StoreSimulationViewer v = new StoreSimulationViewer(s);
 		s.addObserver(v);
 		v.startView();
 
-		// Kö
+		// Queue
 		EventQueue e = new EventQueue();
 		e.addToQueue(new StartEvent(e, s, 0));
 		
-		// Kör
+		// Runs
 		Simulator simulator = new Simulator(s, e);
 		simulator.run();
 		
-		// Resultat
+		// Result
 		v.resultsView();
 		
 	}
