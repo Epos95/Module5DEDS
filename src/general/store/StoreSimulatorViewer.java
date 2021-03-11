@@ -46,13 +46,10 @@ public class StoreSimulatorViewer extends View {
 	}
 
 	public void update(Observable o, Object arg) {
-<<<<<<< Updated upstream
 	    System.out.println("got updated!");
-=======
 		// TODO kör olika prints beroende på vilket currentState som storeState har.
 		// ex) Parameter texten vid StartEvent
 		// ex) Resultat texten vid StopEvent
->>>>>>> Stashed changes
 
 	}
 
