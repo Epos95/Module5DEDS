@@ -47,6 +47,6 @@ public class CustomerArrivedEvent extends Event {
         // generate PickEvent
         this.queue.addToQueue(new ReadyToPayEvent(this.queue, state, state.pickingTime.getTime()+state.currentTime, this.customer));
         
-        state.notifyObservers();
+        state.sendUpdate("Ankomst");
     }
 }

@@ -18,23 +18,17 @@ public class Simulator {
      * 
      */
 	public void run() {
-
-		
 		while (!state.isNotRunning) {
 			if(queue.len() > 0) {
-			    System.out.println(queue.len());
-
 				try {
 					Thread.sleep(3000);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 				queue.pop().execute();
-				state.notifyObservers();
 			} else {
 				break;
 			}
 		}
 	}
-	
 }

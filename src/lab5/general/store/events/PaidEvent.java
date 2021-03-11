@@ -52,5 +52,7 @@ public class PaidEvent extends Event {
         	state.cQueue.dequeue();
             this.queue.push(new PaidEvent(this.queue, state, state.cashierSpeed.getTime()+state.currentTime, this.customer));
         }
+        
+        state.sendUpdate("Betalning");
     }
 }

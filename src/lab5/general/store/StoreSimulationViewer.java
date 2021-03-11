@@ -8,10 +8,17 @@ public class StoreSimulationViewer extends View {
 
 	private StoreState s;
 
+	/**
+	 * 
+	 * @param storeState
+	 */
 	public StoreSimulationViewer(StoreState storeState) {
 		this.s = storeState;
 	}
 
+	/**
+	 * 
+	 */
 	public void startView() {
 		System.out.println("PARAMETRAR");
 		System.out.println("==========");
@@ -30,26 +37,49 @@ public class StoreSimulationViewer extends View {
 		System.out.println(columnNames);
 	}
 	
+	/**
+	 * 
+	 */
 	public void resultsView() {
 		// TODO printa något användbart
-		
-		System.out.println("RESULTAT \n========== \n" +
-				"1) Av  kunder handlade 8 medan 2 missades."
-				/*+ antalet som betalade*/ + "medan\n" /*+ antalet missade kunder (pga fullt i butik)*/);
-		
-		System.out.println("2) Total ledig kassatid: LäGG TILL SEN! \n" + "Genomsnitlig ledig kassatid: LäGG TILL te "
-				+ "(dvs x% av tiden från öppning tills sista kunden betalat).");
-		
-		System.out.println("3) Total tid 5 kunder tvingats köa: LäGG TILL te. \n "
-				+ "Genomsnitlig kötid: LäGG TILL te.");
+		//
+		//System.out.println("RESULTAT \n========== \n" +
+		//		"1) Av  kunder handlade 8 medan 2 missades."
+		//		/*+ antalet som betalade*/ + "medan\n" /*+ antalet missade kunder (pga fullt i butik)*/);
+		//
+		//System.out.println("2) Total ledig kassatid: LäGG TILL SEN! \n" + "Genomsnitlig ledig kassatid: LäGG TILL te "
+		//		+ "(dvs x% av tiden från öppning tills sista kunden betalat).");
+		//
+		//System.out.println("3) Total tid 5 kunder tvingats köa: LäGG TILL te. \n "
+		//		+ "Genomsnitlig kötid: LäGG TILL te.");
 	}
 
+	/**
+	 * 
+	 */
+	@Override
 	public void update(Observable o, Object arg) {
-	    System.out.println("got updated!");
-		// TODO kör olika prints beroende på vilket currentState som storeState har.
-		// ex) Parameter texten vid StartEvent
-		// ex) Resultat texten vid StopEvent
-
+		if (arg != "Start" && arg != "Stop") {
+			String columnNames = String.format("%s\t%9s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s",
+					s.currentTime, 
+					arg, 
+					"??", // Customer id
+					s.isOpen ? 'Ö' : 'S', 
+					s.freeCashRegisters,
+					s.getTotalCashRegisterDowntime(), 
+					s.currentCustomers, 
+					s.getTotalCustomers(), 
+					s.getTotalMissedCustomers(), 
+					s.getTotalQueueCustomers(),
+					s.getTotalQueueTime(), 
+					s.getQueueLength(),
+					s.getQueue());
+			System.out.println(columnNames);
+		} else {
+			String columnNames = String.format("%s\t%9s",
+					s.currentTime, 
+					arg);
+			System.out.println(columnNames);
+		}
 	}
-
 }

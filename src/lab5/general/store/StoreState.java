@@ -16,8 +16,9 @@ public class StoreState extends State {
     // Results
     private int totalCustomers = 0;
     private int totalMissedCustomers = 0;
-    private int totalCashRegisterDowntime = 0;
-    private int totalQueueTime = 0;
+    private double totalCashRegisterDowntime = 0;
+    private double totalQueueTime = 0;
+    private int totalQueueCustomers = 0;
 
     // Other
     public CashRegisterQueue cQueue = new CashRegisterQueue();
@@ -75,10 +76,17 @@ public class StoreState extends State {
 
     /**
      * 
+     */
+	public void sendUpdate(String eventString) {
+        setChanged();
+        notifyObservers(eventString);
+    }
+    
+    /**
+     * 
      * @return
      */
     public Customer newCustomer() {
-        sendUpdate();
         return cCreator.getCustomer();
     }
 
@@ -99,14 +107,6 @@ public class StoreState extends State {
             freeCashRegisters++;
         }
     }
-
-    /**
-     * 
-     */
-	public void sendUpdate() {
-        setChanged();
-        notifyObservers();
-    }
 	
 	// UPDATES FOR RESULT
     public void missedCustomer() {
@@ -114,6 +114,9 @@ public class StoreState extends State {
     }
     public void paidCustomer() {
     	this.totalCustomers += 1;
+    }
+    public void queuedCustomer() {
+    	this.totalQueueCustomers += 1;
     }
 	public void updateTime(double t) {
     	double timeDelta = t - currentTime;
@@ -127,13 +130,22 @@ public class StoreState extends State {
     public int getTotalCustomers() {
         return totalCustomers;
     }
-    public int getTotalMissedBuyers() {
+    public int getTotalMissedCustomers() {
         return totalMissedCustomers;
     }
-    public int getTotalCashRegisterDowntime() {
+    public double getTotalCashRegisterDowntime() {
         return totalCashRegisterDowntime;
     }
-    public int getTotalQueueTime() {
+    public double getTotalQueueTime() {
         return totalQueueTime;
+    }
+    public int getTotalQueueCustomers() {
+    	return totalQueueCustomers;
+    }
+    public int getQueueLength() {
+    	return cQueue.customerQueue.size();
+    }
+    public String getQueue() {
+    	return cQueue.toString();
     }
 }

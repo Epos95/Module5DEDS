@@ -36,6 +36,6 @@ public class StoreCloseEvent extends Event {
         	queue.addToQueue(new EndEvent(queue, state, occurenceTime));
         }
         
-        state.notifyObservers();
+        state.sendUpdate("Stänger");
     }
 }

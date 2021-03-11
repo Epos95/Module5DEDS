@@ -19,14 +19,15 @@ public class RunSim {
 
 		StoreSimulationViewer v = new StoreSimulationViewer(s);
 		s.addObserver(v);
+		
 		System.out.println("Simuleringsexempel 1\n");
 		v.startView();
 
-		s.isOpen = true;
 		EventQueue e = new EventQueue();
 		e.addToQueue(new StartEvent(e, s, 0));
 		Simulator simulator = new Simulator(s, e);
 		simulator.run();
+		
 		v.resultsView();
 	}
 

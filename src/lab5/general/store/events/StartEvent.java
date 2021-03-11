@@ -37,6 +37,6 @@ public class StartEvent extends Event {
     		this.queue.addToQueue(new CustomerArrivedEvent(queue, state, state.arrive.getTime() + state.currentTime, state.newCustomer()));
     	}
         
-        state.notifyObservers();
+    	state.sendUpdate("Start");
     }
 }

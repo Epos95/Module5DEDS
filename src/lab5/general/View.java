@@ -4,7 +4,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 @SuppressWarnings("deprecation")
-public abstract class View implements Observer{
+public abstract class View implements Observer {
 	
 	/**
 	 * 

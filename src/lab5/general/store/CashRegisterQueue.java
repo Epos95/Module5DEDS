@@ -30,4 +30,17 @@ public class CashRegisterQueue {
     public boolean isEmpty() {
         return customerQueue.size() == 0;
     }
+    
+    /**
+     * 
+     */
+    public String toString() {
+    	String s = "[";
+    	
+    	for(Customer customer : customerQueue) {
+    		s += customer.toString();
+    	}
+    	
+    	return s + "]";
+    }
 }

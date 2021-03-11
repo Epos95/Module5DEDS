@@ -50,6 +50,5 @@ public class EventQueue {
 				}
 			}
 		}
-		System.out.println("added new thing");
 	}
 }

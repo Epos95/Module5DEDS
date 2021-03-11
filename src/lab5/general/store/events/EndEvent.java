@@ -27,6 +27,7 @@ public class EndEvent extends Event {
     public void execute() {
     	state.updateTime(occurenceTime);
     	state.isNotRunning = true;
-        state.notifyObservers();
+    	
+    	state.sendUpdate("Stop");
     }
 }
