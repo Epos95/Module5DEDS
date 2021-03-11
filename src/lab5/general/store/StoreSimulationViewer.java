@@ -41,17 +41,19 @@ public class StoreSimulationViewer extends View {
 	 * 
 	 */
 	public void resultsView() {
-		// TODO printa något användbart
-		//
-		//System.out.println("RESULTAT \n========== \n" +
-		//		"1) Av  kunder handlade 8 medan 2 missades."
-		//		/*+ antalet som betalade*/ + "medan\n" /*+ antalet missade kunder (pga fullt i butik)*/);
-		//
-		//System.out.println("2) Total ledig kassatid: LäGG TILL SEN! \n" + "Genomsnitlig ledig kassatid: LäGG TILL te "
-		//		+ "(dvs x% av tiden från öppning tills sista kunden betalat).");
-		//
-		//System.out.println("3) Total tid 5 kunder tvingats köa: LäGG TILL te. \n "
-		//		+ "Genomsnitlig kötid: LäGG TILL te.");
+		
+		System.out.println();
+		System.out.println("RESULTAT");
+		System.out.println("==========");
+		System.out.println();
+		System.out.println(String.format("1) Av %s kunder handlade %s medan %s missades.", s.getTotalMissedCustomers() + s.getTotalCustomers(), s.getTotalCustomers(), s.getTotalMissedCustomers()));
+		System.out.println();
+		System.out.println(String.format("2) Total tid %s kassor varit lediga: %.2f te.", s.CASHREGISTERS, s.getTotalCashRegisterDowntime()));
+		System.out.println(String.format("Genomsnitlig ledig kassatid: %.2f te", s.getTotalCashRegisterDowntime() / s.CASHREGISTERS));
+		System.out.println(String.format("(dvs %.2f%% av tiden från öppning tills sista kunden betalat).", (s.getTotalCashRegisterDowntime() / s.CASHREGISTERS / s.currentTime) * 100));
+		System.out.println();
+		System.out.println(String.format("3) Total tid %s kunder tvingats köa: %.2f te.", s.getTotalQueueCustomers(), s.getTotalQueueTime()));
+		System.out.println(String.format("Genomsnitlig kötid: %.2f te.", s.getTotalQueueTime() / s.getTotalQueueCustomers()));
 	}
 
 	/**
