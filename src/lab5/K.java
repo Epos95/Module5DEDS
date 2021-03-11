@@ -1,5 +1,13 @@
 package lab5;
 
+/**
+ * <p>
+ * Different versions of the simulation.
+ * Used to alter variables like the to collect products.
+ * </p>
+ * @author Anton Lundmark, Elliot Johansson Fryklöf, Karolina Rucinska and 
+ * Max Agnesund.
+ */
 public interface K {
 
 // Ex 1: (som sim1)

@@ -7,10 +7,16 @@ import lab5.general.Simulator;
 import lab5.general.store.StoreState;
 import lab5.general.store.events.StartEvent;
 
+/**
+ * Tries to optimize the parameters of the store, open checkouts etc.
+ * 
+ * @author Anton Lundmark, Elliot Johansson Fryklöf, Karolina Rucinska and 
+ * Max Agnesund
+ */
 public class Optimize {
 
 	/**
-	 * 
+	 * Main method.
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -65,15 +71,17 @@ public class Optimize {
 	
 	/**
 	 * METOD 2
-	 * @param maxCustomers
-	 * @param arriveInterval
-	 * @param cashierMin
-	 * @param cashierMax
-	 * @param pickingMin
-	 * @param pickingMax
-	 * @param endTime
-	 * @param seed
-	 * @return
+	 * Optimizes the amount of chekouts that should be open for max efficiency.
+	 * @param cashRegisters Amount of cash registers in the simulation.
+	 * @param maxCustomers Max customers allowed in store.
+	 * @param arriveInterval The interval for when customers arrive.
+	 * @param cashierMin Minimum checkout time.
+	 * @param cashierMax Maximum checkout time.
+	 * @param pickingMin Minimum picking time.
+	 * @param pickingMax Maxiumum picking time.
+	 * @param endTime The end time.
+	 * @param seed The seed of the simulation.
+	 * @return The amount of cashiers that yield the best results
 	 */
 	private static int optimizeCashierAmount(
 			int maxCustomers, double arriveInterval,
@@ -103,15 +111,15 @@ public class Optimize {
 	
 	/**
 	 * Metod 3
-	 * @param maxCustomers
-	 * @param arriveInterval
-	 * @param cashierMin
-	 * @param cashierMax
-	 * @param pickingMin
-	 * @param pickingMax
-	 * @param endTime
-	 * @param seedRandomizer
-	 * @return
+	 * @param maxCustomers Max customers allowed in store.
+	 * @param arriveInterval The interval for when customers arrive.
+	 * @param cashierMin Minimum checkout time.
+	 * @param cashierMax Maximum checkout time.
+	 * @param pickingMin Minimum picking time.
+	 * @param pickingMax Maxiumum picking time.
+	 * @param endTime The end time.
+	 * @param seedRandomizer A randomizer of the seed.
+	 * @return The seed with 
 	 */
 	private static int optimizeCashierAmountWithRandomSeed(int maxCustomers, double arriveInterval,
 			double cashierMin, double cashierMax, double pickingMin,
