@@ -39,9 +39,9 @@ public class PaidEvent extends Event {
     public void execute() {
     	state.updateTime(occurenceTime);
         state.sendUpdate("Betalning", customer.toString());
-        state.currentCustomers -= 1;
         state.paidCustomer();
-        
+        state.currentCustomers -= 1;
+
         //
         if (state.cQueue.isEmpty()) {
         	

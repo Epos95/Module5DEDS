@@ -23,7 +23,8 @@ public class RunSim {
 	 */
 	public static void main(String[] args) {
 		
-		
+
+		/*
 		System.out.println("Simuleringsexempel 1\n");
 		StoreState s = new StoreState(
 				2, // Cashregisters
@@ -35,10 +36,10 @@ public class RunSim {
 				1.0, // PickingMax
 				10, // OpeningTime
 				1234 // Seed
-		);
+		);*/
 		
 	
-		/*System.out.println("Simuleringsexempel 2\n");
+		System.out.println("Simuleringsexempel 2\n");
 		StoreState s = new StoreState(
 				2, // Cashregisters
 				7, // Max customers
@@ -49,7 +50,7 @@ public class RunSim {
 				0.9, // PickingMax
 				8, // OpeningTime
 				13 // Seed
-		);*/
+		);
 		
 		
 		// Vy
