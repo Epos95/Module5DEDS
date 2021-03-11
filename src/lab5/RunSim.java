@@ -6,10 +6,19 @@ import lab5.general.store.StoreSimulationViewer;
 import lab5.general.store.StoreState;
 import lab5.general.store.events.StartEvent;
 
+/**
+ * <p>
+ * Contains main method.
+ * Creates necessary objects for the simulation and runs the run method
+ * of the simulation class to initiate the simulation.
+ * </p>
+ * @author Anton Lundmark, Elliot Johansson Fryklöf, Karolina Rucinska and 
+ * Max Agnesund
+ */
 public class RunSim {
 
 	/**
-	 * 
+	 * Main method.
 	 * @param args
 	 */
 	public static void main(String[] args) {
