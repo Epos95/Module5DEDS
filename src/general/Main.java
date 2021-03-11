@@ -1,6 +1,5 @@
 package general;
 
-
 import general.store.StoreSimulatorViewer;
 import general.store.StoreState;
 import general.store.events.StartEvent;
@@ -9,20 +8,13 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		StoreState s = new StoreState(
-				4,
-				50,
-				1,
-				2,
-				4,
-				1,
-				5,
-				0,
-				1234
+		StoreState s = new StoreState(2, 5, 1.0,
+				2, 3, 0.5, 1.0, 0, 1234
 		);
 
-		StoreSimulatorViewer v = new StoreSimulatorViewer();
+		StoreSimulatorViewer v = new StoreSimulatorViewer(s);
 		s.addObserver(v);
+		System.out.println("Simuleringsexempel 1\n");
 		v.startView();
 
 		s.isOpen = true;
