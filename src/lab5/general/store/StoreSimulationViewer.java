@@ -3,21 +3,28 @@ package lab5.general.store;
 import java.util.Observable;
 import lab5.general.View;
 
+/**
+ * <p>
+ * The view of the store simulation.
+ * Shows the steps of the simulation.
+ * </p>
+ * @author Anton Lundmark, Elliot Johansson Fryklöf, Karolina Rucinska and 
+ * Max Agnesund
+ */
 @SuppressWarnings("deprecation")
 public class StoreSimulationViewer extends View {
 
 	private StoreState s;
 
 	/**
-	 * 
-	 * @param storeState
+	 * @param storeState The storeState
 	 */
 	public StoreSimulationViewer(StoreState storeState) {
 		this.s = storeState;
 	}
 
 	/**
-	 * 
+	 * Prints the parameters of the simulation
 	 */
 	public void startView() {
 		System.out.println("PARAMETRAR");
@@ -38,7 +45,7 @@ public class StoreSimulationViewer extends View {
 	}
 	
 	/**
-	 * 
+	 * Prints the results of the simulation.
 	 */
 	public void resultsView() {
 		
@@ -57,7 +64,7 @@ public class StoreSimulationViewer extends View {
 	}
 
 	/**
-	 * 
+	 * Prints every event occuring during the simulation.
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
