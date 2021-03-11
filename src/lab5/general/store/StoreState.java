@@ -48,7 +48,7 @@ public class StoreState extends State {
      */
     public StoreState(int cashRegisters, int maxCustomers, double arriveInterval,
                       double cashierMin, double cashierMax, double pickingMin,
-                      double pickingMax, int openingTime, int seed) {
+                      double pickingMax, double openingTime, int seed) {
 
     	//
         this.CASHREGISTERS = cashRegisters;
